@@ -246,7 +246,7 @@ const StyledInput = styled.input`
     font-family: Noto Sans KR;
   }
 
-  @media all and (max-width: 1023px) {
+  @media all and (max-width: 767px) {
     font-size: 0.8rem;
   }
 `;
@@ -269,6 +269,7 @@ const PasswordContainer = styled.div`
   }
   @media all and (max-width: 767px) {
     margin-left: -15px;
+    grid-gap: 14px 15px;
   }
 
   input:first-child {
