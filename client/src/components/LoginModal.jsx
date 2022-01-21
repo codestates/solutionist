@@ -14,16 +14,17 @@ import {
   signUpGoogle,
   signUpKakao,
 } from '../api/LoginModalAPI';
+import LandingLOGO from '../../public/assets/images/LandingLOGO.png';
 
 // * 프리젠테이셔널 컴포넌트
 
 const ModalContainer = styled.div`
   display: flex;
-  width: 42.3vw;
-  height: 59.4vh;
-  padding: 7.2% 5.3%;
+  width: 100%;
+  height: 520px;
+  /* padding: 5%; */
   border-radius: 10px;
-  border: solid 1px #707070;
+  /* border: solid 1px #707070; */
   background-color: #fff;
   svg {
     cursor: pointer;
@@ -51,13 +52,18 @@ const TitleBox = styled.div`
 const FormBox = styled.form`
   display: flex;
   flex-direction: column;
-  width: 66%;
-  padding-left: ${(props) => (props.paddingLeft ? props.paddingLeft : '0px')};
+  width: 100%;
+  /* padding-left: ${(props) => (props.paddingLeft ? props.paddingLeft : '0px')};
   border-left: ${(props) => (props.borderLeft ? props.borderLeft : '0px')};
   margin-left: ${(props) => (props.marginLeft ? props.marginLeft : '0px')};
   margin-right: ${(props) => (props.marginRight ? props.marginRight : '0px')};
   padding-right: ${(props) => (props.paddingRight ? props.paddingRight : '0px')};
-  border-right: ${(props) => (props.borderRight ? props.borderRight : '0px')};
+  border-right: ${(props) => (props.borderRight ? props.borderRight : '0px')}; */
+
+  /* svg {
+    font-size: 3rem;
+    height:100px;
+  } */
 `;
 
 const InputBox = styled.div`
@@ -180,7 +186,7 @@ const StyledButton = styled.button`
 // 모달 컴포넌트
 const ModalBackdrop = styled.div`
   position: fixed;
-  z-index: 999;
+  z-index: 1010;
   top: 0;
   left: 0;
   bottom: 0;
@@ -194,7 +200,10 @@ const ModalBackdrop = styled.div`
 
 const ModalView = styled.div`
   background-color: white;
-  width: fit-content;
+  /* width: fit-content; */
+  width: 320px;
+  height: 520px;
+  padding: 5%;
   border-radius: 10px;
 `;
 
@@ -210,6 +219,8 @@ const boxFade = keyframes`
 
 const StyledWrapper = styled.div`
   animation: ${boxFade} 1s normal;
+  z-index: 1010;
+  position: absolute;
 `;
 
 // 사라지는 애니메이션
@@ -481,18 +492,16 @@ const LoginModal = ({
             <ModalView onClick={(e) => e.stopPropagation()}>
               {toggle ? (
                 <ModalContainer onSubmit={(e) => e.preventDefault()}>
-                  <TitleBox>
-                    <img src="./assets/images/LOGO.png" />
-                    <span>SOLUTIONIST</span>
-                  </TitleBox>
                   <FormBox
-                    marginLeft={'5.3%'}
-                    paddingLeft={'5.3%'}
-                    borderLeft={'2px solid black;'}
+                  // marginLeft={'5.3%'}
+                  // paddingLeft={'5.3%'}
+                  // borderLeft={'2px solid black;'}
                   >
                     <FlexEndGroup>
                       <FaTimesCircle onClick={onModalOffAction} />
                     </FlexEndGroup>
+                    {/* <LogoFull /> */}
+                    <img src={LandingLOGO} />
                     <InputBox marginBottom={'10.7%'}>
                       <label>Email</label>
                       <input
@@ -535,9 +544,9 @@ const LoginModal = ({
               ) : (
                 <ModalContainer onSubmit={(e) => e.preventDefault()}>
                   <FormBox
-                    marginRight={'5.3%'}
-                    paddingRight={'5.3%'}
-                    borderRight={'2px solid black;'}
+                  // marginRight={'5.3%'}
+                  // paddingRight={'5.3%'}
+                  // borderRight={'2px solid black;'}
                   >
                     <InputBox marginBottom={'5.7%'}>
                       <label>Email</label>
@@ -609,10 +618,6 @@ const LoginModal = ({
                       </SignupGroup>
                     </BetweenDiv>
                   </FormBox>
-                  <TitleBox>
-                    <img src="./assets/images/LOGO.png" />
-                    <span>SOLUTIONIST</span>
-                  </TitleBox>
                 </ModalContainer>
               )}
             </ModalView>
