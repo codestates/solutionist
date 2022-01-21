@@ -230,7 +230,7 @@ const Result = () => {
 
   let count = 0;
   let total = set.problems.filter((el) => el.answer !== 0).length;
-  set.problems.map((problem, idx) => {
+  set.problems?.map((problem, idx) => {
     if (data.userChoices) {
       if (problem.answer === data.userChoices[idx].choice) {
         count++;
@@ -263,7 +263,7 @@ const Result = () => {
       <SidebarContainer>
         <SideRelative>
           <Sidebar>
-            {set.problems.map((problem, idx) => (
+            {set.problems?.map((problem, idx) => (
               <SidebarContent
                 onClick={handleNav}
                 id={idx}
@@ -277,7 +277,7 @@ const Result = () => {
           </Sidebar>
         </SideRelative>
       </SidebarContainer>
-      {set.problems.map((problem, idx) => (
+      {set.problems?.map((problem, idx) => (
         <React.Fragment key={`p${idx}`}>
           <ResultProblem
             key={problem.index}
