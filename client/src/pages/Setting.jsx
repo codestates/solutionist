@@ -186,6 +186,46 @@ const Nickname = styled.div`
       width: 141px;
     }
   }
+
+  /* 말풍선 적절한 top 과 margin-left 로 위치조정 */
+  .arrow_box {
+    display: none;
+    position: absolute;
+
+    width: 150px;
+    padding: 10px;
+    /* left: -90px; */
+    /* top: -40px; */
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    background: var(--black);
+    color: var(--butterscotch);
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  /* .arrow_box:after {
+    position: relative;
+    bottom: 100%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    margin-left: -10px;
+    border: solid transparent;
+    border-color: rgba(51, 51, 51, 0);
+    border-bottom-color: #666;
+    border-width: 10px;
+    pointer-events: none;
+    content: ' ';
+  } */
+
+  svg:hover + p.arrow_box {
+    display: block;
+    position: relative;
+    left: -90px;
+    top: -40px;
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -625,6 +665,7 @@ const Setting = () => {
                 <Nickname>
                   <span>{username}</span>
                   <MdEdit onClick={handleEditUsername} />
+                  {/* <p className="arrow_box">닉네임을 바꿔보세요!</p> */}
                 </Nickname>
               )}
               {isAfterUsernameEdit ? (

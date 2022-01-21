@@ -156,6 +156,7 @@ export class SetsRepository extends Repository<sets> {
       .innerJoin(users, 'users', 'solveRecords.userId = users.id')
       .where('solveRecords.userId = :userId', { userId: userId })
       .groupBy(`solveRecords.setId`)
+      .orderBy('createdAt', 'DESC')
       .limit(20)
       .getRawMany();
     return dt;

@@ -9,12 +9,37 @@ import XIcon from '../icons/X';
 
 const SolveContainer = styled.div`
   position: relative;
-  height: calc(100% - 4rem);
-  padding: 2rem 0;
-  overflow: scroll;
+  height: calc(100% - 4rem - 70px);
+  padding: 1rem 0 2rem;
+  max-width: 1216px;
+  margin: 0 auto;
 
   *::placeholder {
     opacity: 0.5;
+  }
+`;
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin: 0 25% 0.5rem 25%;
+  font-size: 1rem;
+  color: var(--warm-grey);
+  user-select: none;
+  p {
+    font-family: 'GongGothicMedium', sans-serif;
+    :last-child {
+      cursor: pointer;
+    }
+  }
+  @media all and (max-width: 1023px) {
+    width: 60%;
+    margin: 0 15% 0.5rem 25%;
+  }
+  @media all and (max-width: 767px) {
+    width: calc(100% - 2rem);
+    margin: 0 1rem 0.5rem 1rem;
+    font-size: 0.75rem;
   }
 `;
 const Title = styled.div`
@@ -24,7 +49,7 @@ const Title = styled.div`
   margin: 0 25% 0 25%;
   line-height: 120%;
   font-size: 2rem;
-  font-family: 'GongGothicMedium', sans-serif;
+  font-weight: bold;
   word-wrap: break-word;
   word-break: keep-all;
 
@@ -45,14 +70,13 @@ const Desc = styled.div`
   margin: 0.5rem 25% 1rem;
   line-height: 120%;
   font-size: 1.25rem;
-  font-family: 'GowunDodum-Regular', sans-serif;
   word-wrap: break-word;
   word-break: keep-all;
   resize: none;
 
   @media all and (max-width: 1023px) {
     width: 60%;
-    margin: 0.5rem 15% 0.5rem 25%;
+    margin: 0.5rem 15% 1rem 25%;
   }
   @media all and (max-width: 767px) {
     width: calc(100% - 2rem);
@@ -80,12 +104,11 @@ const Info = styled.div`
   }
   @media all and (max-width: 1023px) {
     width: 60%;
-    margin: 0.5rem 15% 0.5rem 25%;
+    margin: 0.5rem 15% 1rem 25%;
   }
   @media all and (max-width: 767px) {
     width: calc(100% - 2rem);
     margin: 0.5rem 1rem;
-    font-size: 1rem;
   }
 `;
 const Divider = styled.div`
@@ -104,7 +127,7 @@ const Divider = styled.div`
   }
 `;
 const ProblemContainer = styled.div`
-  margin: 0.25rem 0;
+  margin: 0.5rem 0;
   display: grid;
   grid-template-rows: auto auto auto auto;
   grid-template-columns: 25% 1fr 25%;
@@ -134,13 +157,21 @@ const ProblemNum = styled.div`
   grid-area: number;
   text-align: end;
   color: ${(props) => props.color};
-  font-size: ${(props) => props.font_size};
+  font-size: 6rem;
   margin-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  p {
+    font-family: 'Righteous', sans-serif;
+  }
 
   @media all and (max-width: 767px) {
     font-size: 2rem;
     text-align: start;
     margin-top: 1rem;
+    margin-right: 0;
+    flex-direction: row;
+    justify-content: space-between;
   }
 `;
 const Question = styled.div`
@@ -158,8 +189,7 @@ const Question = styled.div`
 `;
 const ChoicesContainer = styled.ol`
   grid-area: choice;
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
 `;
 const Choice = styled.li`
   display: flex;
@@ -183,6 +213,7 @@ const ChoiceNum = styled.div`
 const ChoiceContent = styled.div`
   flex: 1;
   width: 100%;
+  height: 1rem;
   margin: 0.25rem 0.5rem 0.25rem 0;
   padding: 0.25rem 0;
   color: black;
@@ -240,11 +271,13 @@ const Explanation = styled.div`
   word-wrap: break-word;
   word-break: break-word;
 `;
+const ChartIconContainer = styled.div`
+  position: relative;
+`;
 const ChartIcon = styled.div`
-  grid-area: statIcon;
-  text-align: right;
+  position: absolute;
+  right: 0.5rem;
   font-size: 3rem;
-  margin-right: 1.5rem;
   color: ${(props) => (props.isStat ? 'var(--orangey-yellow)' : 'var(--warm-grey-50)')};
   :hover {
     color: ${(props) =>
@@ -252,8 +285,8 @@ const ChartIcon = styled.div`
   }
   @media all and (max-width: 767px) {
     font-size: 1.75rem;
-    margin-top: 1rem;
     margin-right: 0;
+    position: initial;
   }
 `;
 const ChartContainer = styled.div`
@@ -267,6 +300,7 @@ const ChartLine = styled.div`
   display: grid;
   grid-template-columns: 2rem 1fr 3rem;
   grid-gap: 1rem;
+  font-size: 0.75rem;
 
   div:last-child {
     text-align: right;
@@ -294,14 +328,22 @@ const ButtonContainer = styled.div`
   color: var(--warm-grey);
   font-size: 3rem;
   opacity: 0.5;
-  * {
+  user-select: none;
+  div {
     flex: 1;
+    p {
+      margin: 1rem 0;
+      font-family: 'Righteous', sans-serif;
+    }
+    * {
+      cursor: pointer;
+      :hover {
+        color: black;
+      }
+    }
   }
   svg {
     margin: 1rem 0;
-    :hover {
-      color: black;
-    }
   }
   div:first-child {
     text-align: left;
@@ -344,6 +386,7 @@ const Sidebar = styled.div`
   padding: 0 1rem;
   border-left: 2px dashed var(--warm-grey);
   color: var(--warm-grey);
+  width: calc(100% - 4rem - 2px);
   div {
     font-size: 0.75rem;
   }
@@ -352,19 +395,22 @@ const SidebarContent = styled.div`
   margin-bottom: 0.25rem;
   display: flex;
   color: ${(props) => props.color};
-  * {
-    font-size: 1rem;
+  div {
     font-family: 'GowunDodum-Regular', sans-serif;
     font-weight: ${(props) => props.weight};
     word-wrap: break-word;
     word-break: keep-all;
+    width: 100%;
     line-height: 120%;
+    user-select: none;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-  div:first-child {
-    margin-right: 0.5rem;
+    cursor: pointer;
+    :first-child {
+      width: auto;
+      margin-right: 0.5rem;
+    }
   }
 `;
 
@@ -497,6 +543,9 @@ const Solve = () => {
 
   return (
     <SolveContainer>
+      <Header>
+        <p>세트 풀기</p>
+      </Header>
       {!isSolving ? (
         <>
           <Title>{set.title}</Title>
@@ -512,7 +561,9 @@ const Solve = () => {
           </Info>
           <Divider />
           <ButtonContainer>
-            <FaCaretSquareRight onClick={handleStart} />
+            <div>
+              <FaCaretSquareRight onClick={handleStart} />
+            </div>
           </ButtonContainer>
         </>
       ) : (
@@ -547,7 +598,6 @@ const Solve = () => {
             {isChecked[curIdx] ? (
               <>
                 <ProblemNum
-                  font_size={curIdx + 1 > 99 ? '6rem' : '8rem'}
                   color={
                     userChoices[curIdx] && answer
                       ? userChoices[curIdx].choice === answer
@@ -556,7 +606,12 @@ const Solve = () => {
                       : 'var(--orangey-yellow-50)'
                   }
                 >
-                  {index}
+                  <p>{index}</p>
+                  <ChartIconContainer>
+                    <ChartIcon onClick={() => setIsStat(!isStat)} isStat={isStat}>
+                      <FaChartBar />
+                    </ChartIcon>
+                  </ChartIconContainer>
                 </ProblemNum>
                 <Question>{question}</Question>
                 <ChoicesContainer>
@@ -666,9 +721,6 @@ const Solve = () => {
                     </>
                   )}
                 </ChoicesContainer>
-                <ChartIcon onClick={() => setIsStat(!isStat)} isStat={isStat}>
-                  <FaChartBar />
-                </ChartIcon>
                 <ChartContainer rows={choice.length + 1} isStat={isStat}>
                   <ChartLine>
                     <div>보기</div>
@@ -715,11 +767,8 @@ const Solve = () => {
               </>
             ) : (
               <>
-                <ProblemNum
-                  font_size={curIdx + 1 > 99 ? '6rem' : '8rem'}
-                  color="var(--orangey-yellow-50)"
-                >
-                  {index}
+                <ProblemNum color="var(--orangey-yellow-50)">
+                  <p>{index}</p>
                 </ProblemNum>
                 <Question>{question}</Question>
                 <ChoicesContainer>
@@ -802,9 +851,13 @@ const Solve = () => {
                 <FaCaretSquareLeft onClick={handlePrev} />
               </div>
             )}
-            <div onClick={handleCheck}>check </div>
+            <div>
+              <p onClick={handleCheck}>check</p>
+            </div>
             {curIdx === set.problems.length - 1 ? (
-              <div onClick={handleSubmit}>submit</div>
+              <div>
+                <p onClick={handleSubmit}>submit</p>
+              </div>
             ) : (
               <div>
                 <FaCaretSquareRight onClick={handleNext} />

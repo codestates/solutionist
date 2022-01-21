@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
-import SubmenuIcon from '../icons/Submenu';
 import ShareIcon from '../icons/Share';
 import ChartIcon from '../icons/Chart';
 import UserIcon from '../icons/User';
@@ -19,26 +18,20 @@ import { VscOutput } from 'react-icons/vsc';
 import { Link } from 'react-router-dom';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { useNavigate } from 'react-router-dom';
+import { deleteSets } from '../api/SearchSetAPI';
 
-const anim = keyframes`
-  from{
-  }
-  to {
-    transform: rotateY(180deg)
-    }
-`;
 const CardContainer = styled.div`
   position: relative;
   perspective: 1000px;
-
+  margin: 0.5rem;
   display: ${(props) => (props.$display ? 'none' : '')};
 
-  width: 180px;
-  height: 240px;
+  width: 10rem;
+  height: 12rem;
 `;
 const CardFront = styled.div`
-  width: 180px;
-  height: 240px;
+  width: 10rem;
+  height: 12rem;
   background-color: white;
   border: 1px solid var(--warm-grey);
   border-radius: 10px;
@@ -50,30 +43,33 @@ const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: calc(100% - 2rem);
-  margin: 1rem;
+  height: calc(100% - 1.5rem);
+  margin: 0.75rem;
   /* height: calc(100% - 1rem); */
   /* margin: 0.5rem; */
 `;
 const SetInfo = styled.div``;
 const SetName = styled.div`
-  font-size: 1.25rem;
-
+  font-size: 1rem;
   white-space: normal;
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  line-height: 120%;
+  font-weight: bold;
 `;
 const SetDesc = styled.div`
-  margin-top: 1rem;
+  margin-top: 0.75rem;
   font-family: 'GowunDodum-Regular', sans-serif;
-
+  word-wrap: break-word;
+  word-break: keep-all;
   white-space: normal;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  line-height: 120%;
 
   &.align-right {
     display: flex;
@@ -106,15 +102,19 @@ const StatsContainer = styled.ul`
 const Stat = styled.li`
   display: flex;
   margin-top: 0.5rem;
+  font-size: 0.75rem;
+  justify-content: space-between;
   > p {
+    display: flex;
+    align-items: center;
     margin-left: 0.5rem;
   }
 `;
 const CardBack = styled.div`
   position: absolute;
   top: 0;
-  width: 180px;
-  height: 240px;
+  width: 10rem;
+  height: 12rem;
   border-radius: 10px;
   border: 1px solid var(--warm-grey);
   background-color: var(--warm-grey);
@@ -169,14 +169,21 @@ const SetCardVerTwo = ({
   title,
   updatedAt,
   isMade,
+  collectionId,
   recordId,
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const [isHidden, setIsHidden] = useState(false);
-  const handleHidden = () => {
+  const handleDelete = () => {
     setIsHidden(true);
-    // ! 삭제 api
+    deleteSets(collectionId)
+      .then(() => {
+        // console.log('삭제 성공');
+      })
+      .catch((err) => {
+        // console.log('캐치에러', err)
+      });
   };
 
   const [isShare, setIsShare] = useState(false);
@@ -185,7 +192,8 @@ const SetCardVerTwo = ({
   };
 
   // TODO : 동작은 하는데 알림이 없음 ex)클립보드에 저장 완료 메시지
-  const solveUrl = `http://localhost:9000/solve/${id}`;
+  const solveUrl = `https://solutionist.site/solve/${id}`;
+  // console.log('solve$id', solveUrl);
 
   // * 카카오 공유하기
   useEffect(() => {
@@ -200,18 +208,18 @@ const SetCardVerTwo = ({
       objectType: 'feed',
       content: {
         title: `${title} 문제 풀기`,
-        description: `${creator}님이 공유하신 문제로 이동합니다.`,
+        description: `문제 풀러 가볼까요?`,
         imageUrl:
           'https://user-images.githubusercontent.com/73838733/150278687-d065323b-f6db-4197-b97c-7b84293a9fcf.png',
         link: {
-          mobileWebUrl: `https://solutionist.site/solve/${id}`,
+          mobileWebUrl: 'https://solutionist.site/solve/' + id,
         },
       },
       buttons: [
         {
           title: '웹으로 이동',
           link: {
-            mobileWebUrl: `https://solutionist.site/solve/${id}`,
+            mobileWebUrl: 'https://solutionist.site/solve/' + id,
           },
         },
       ],
@@ -349,7 +357,7 @@ const SetCardVerTwo = ({
                   {/* // TODO : 클립보드 & 카카오 공유 선택 */}
                 </Menu>
                 {isMade && (
-                  <Menu onClick={handleHidden}>
+                  <Menu onClick={handleDelete}>
                     <TrashIcon fill="white" /> 삭제
                     {/* // TODO : display:none? 안보이게 처리 */}
                   </Menu>

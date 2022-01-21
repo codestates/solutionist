@@ -6,7 +6,7 @@ import OIcon from '../icons/O';
 import XIcon from '../icons/X';
 
 const ProblemContainer = styled.div`
-  margin: 1rem 0;
+  margin: 0.5rem 0;
   display: grid;
   grid-template-rows: auto auto auto auto;
   grid-template-columns: 25% 1fr 25%;
@@ -36,13 +36,20 @@ const ProblemNum = styled.div`
   grid-area: number;
   text-align: end;
   color: ${(props) => props.color};
-  font-size: ${(props) => props.font_size};
+  font-size: 6rem;
   margin-right: 1rem;
-
+  display: flex;
+  flex-direction: column;
+  p {
+    font-family: 'Righteous', sans-serif;
+  }
   @media all and (max-width: 767px) {
     font-size: 2rem;
     text-align: start;
     margin-top: 1rem;
+    margin-right: 0;
+    flex-direction: row;
+    justify-content: space-between;
   }
 `;
 
@@ -52,9 +59,9 @@ const Question = styled.div`
   height: auto;
   line-height: 125%;
   word-wrap: break-word;
-  word-break: break-word;
+  word-break: keep-all;
   font-size: 1.25rem;
-  font-family: 'GongGothicMedium', sans-serif;
+  font-family: 'GowunDodum-Regular', sans-serif;
   @media all and (max-width: 767px) {
     font-size: 1rem;
   }
@@ -90,9 +97,10 @@ const ChoiceContent = styled.div`
   padding: 0.25rem 0;
   color: black;
   font-size: 1rem;
+  height: 1rem;
   font-family: 'GowunDodum-Regular', sans-serif;
   word-wrap: break-word;
-  word-break: break-word;
+  word-break: keep-all;
 `;
 const ExplanationContainer = styled.div`
   grid-area: explanation;
@@ -108,7 +116,7 @@ const Explanation = styled.div`
   font-size: 0.75rem;
   font-family: 'GowunDodum-Regular', sans-serif;
   word-wrap: break-word;
-  word-break: break-word;
+  word-break: keep-all;
 `;
 const OxChoices = styled.div`
   display: flex;
@@ -156,17 +164,19 @@ const ChartLine = styled.div`
     text-align: right;
   }
 `;
+const ChartIconContainer = styled.div`
+  position: relative;
+`;
 const ChartIcon = styled.div`
-  grid-area: statIcon;
-  text-align: right;
+  position: absolute;
+  right: 0.5rem;
   font-size: 3rem;
-  margin-right: 1.5rem;
   color: ${(props) => (props.isStat ? 'var(--orangey-yellow)' : 'var(--warm-grey-50)')};
 
   @media all and (max-width: 767px) {
     font-size: 1.75rem;
-    margin-top: 1rem;
     margin-right: 0;
+    position: initial;
   }
 `;
 const ChartStatNum = styled.div`
@@ -189,7 +199,6 @@ const ResultProblem = ({ idx, problem, navRefs, data }) => {
   return (
     <ProblemContainer ref={(el) => (navRefs.current[idx] = el)}>
       <ProblemNum
-        font_size={curIdx + 1 > 99 ? '6rem' : '8rem'}
         color={
           data.userChoices && problem.answer
             ? data.userChoices[curIdx].choice === problem.answer
@@ -198,7 +207,12 @@ const ResultProblem = ({ idx, problem, navRefs, data }) => {
             : 'var(--orangey-yellow-50)'
         }
       >
-        {index}
+        <p>{index}</p>
+        <ChartIconContainer>
+          <ChartIcon onClick={() => setIsStat(!isStat)} isStat={isStat}>
+            <FaChartBar />
+          </ChartIcon>
+        </ChartIconContainer>
       </ProblemNum>
       <Question>{problem.question}</Question>
       <ChoicesContainer>
@@ -308,9 +322,6 @@ const ResultProblem = ({ idx, problem, navRefs, data }) => {
           </>
         )}
       </ChoicesContainer>
-      <ChartIcon onClick={() => setIsStat(!isStat)} isStat={isStat}>
-        <FaChartBar />
-      </ChartIcon>
       <ChartContainer rows={problem.choice.length + 1} isStat={isStat}>
         <ChartLine>
           <div>보기</div>

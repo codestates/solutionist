@@ -35,7 +35,7 @@ body {
   background-color: var(--very-light-pink);
 }
 * {
-  font-family: 'Righteous', 'Noto Sans KR', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 input,
 textarea {

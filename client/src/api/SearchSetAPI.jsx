@@ -14,9 +14,9 @@ export function popularSets() {
 
 // * [DELETE: /collections/{collectionId} [세트 삭제]]
 // TODO : TEST
-export function deleteSets(state) {
+export function deleteSets(collectionId) {
   return axios.delete(
-    `${process.env.SERVER_URL}collections/${state.collectionId}`,
+    `${process.env.SERVER_URL}collections/${collectionId}`,
     // {
     // collectionId: state.collectionId,
     // },

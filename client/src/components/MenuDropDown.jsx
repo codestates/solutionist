@@ -2,8 +2,6 @@ import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
 import { logout } from '../api/SettingAPI';
-
-// redux
 import { useSelector } from 'react-redux';
 
 const FadeIn = keyframes`
@@ -17,13 +15,13 @@ to {
 
 const DropDownContainer = styled.div`
   position: absolute;
-  top: 80px;
-  right: 10px;
-  padding: 25px;
+  top: 3.5rem;
+  right: 0.5rem;
+  padding: 1rem;
   background-color: white;
-  border-radius: 10px;
+  border-radius: 0.5rem;
   border: 1px solid var(--warm-grey);
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.16);
+  box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.16);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,44 +32,36 @@ const DropDownContainer = styled.div`
 `;
 
 const ImageContainer = styled.div`
-  width: 120px;
-  height: 120px;
+  width: 6rem;
+  height: 6rem;
   background-color: var(--warm-grey);
   border-radius: 50%;
 
   img {
     position: inherit;
-    width: 120px;
-    height: 120px;
+    width: 6rem;
+    height: 6rem;
     outline: none;
     display: block;
     border-radius: 50%;
   }
 `;
 const Username = styled.div`
-  font-size: 1.25rem;
-  margin-top: 20px;
+  font-size: 1rem;
+  margin-top: 1.25rem;
 `;
 const Email = styled.div`
-  width: 208px;
-  font-size: 1rem;
-  margin-top: 5px;
-  padding-bottom: 15px;
+  width: 10rem;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
   text-align: center;
   border-bottom: 1px solid var(--warm-grey);
 `;
 
-const MySetMenu = styled.div`
-  margin-top: 25px;
-  font-size: 1.5rem;
-`;
-const SettingMenu = styled.div`
-  margin-top: 25px;
-  font-size: 1.5rem;
-`;
-const LogoutMenu = styled.div`
-  margin-top: 25px;
-  font-size: 1.5rem;
+const Menu = styled.div`
+  margin: 0.5rem 0;
 `;
 
 const handleLogout = () => {
@@ -108,13 +98,13 @@ const MenuDropDown = ({ handleDropDown, onlogoutAction }) => {
       <Username>{username}</Username>
       <Email>{email}</Email>
       <Link to="/myset" onClick={handleDropDown}>
-        <MySetMenu>나의 세트</MySetMenu>
+        <Menu>나의 세트</Menu>
       </Link>
       <Link to="/setting" onClick={handleDropDown}>
-        <SettingMenu>프로필 설정</SettingMenu>
+        <Menu>프로필 설정</Menu>
       </Link>
       <Link to="/">
-        <LogoutMenu
+        <Menu
           onClick={() => {
             handleDropDown();
             handleLogout();
@@ -122,7 +112,7 @@ const MenuDropDown = ({ handleDropDown, onlogoutAction }) => {
           }}
         >
           로그아웃
-        </LogoutMenu>
+        </Menu>
       </Link>
     </DropDownContainer>
   );

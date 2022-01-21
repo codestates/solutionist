@@ -80,11 +80,15 @@ const Header = styled.div`
     margin-bottom: 0.25rem;
     font-family: 'GongGothicMedium', sans-serif;
     :nth-child(2) {
-      font-size: 2rem;
+      font-size: 3rem;
       color: var(--butterscotch);
       background-color: rgba(0, 0, 0, 0.75);
-      padding: 0.25rem 0;
+      padding: 0.5rem 0 0.25rem;
     }
+  }
+  img {
+    margin-top: 0.25rem;
+    height: 3rem;
   }
 `;
 const HeaderContent = styled.div`
@@ -96,7 +100,6 @@ const HeaderContent = styled.div`
 `;
 const TextContainer = styled.div`
   font-size: 1rem;
-  z-index: 5;
   display: flex;
   flex-direction: column;
   margin: 0 2rem;
@@ -109,7 +112,7 @@ const TextContainer = styled.div`
   }
 `;
 const Subheader = styled.div`
-  font-size: 2rem;
+  font-size: 3rem;
   margin-bottom: 2rem;
   word-wrap: break-word;
   word-break: keep-all;
@@ -117,10 +120,11 @@ const Subheader = styled.div`
   p {
     margin-bottom: 0.25rem;
     font-family: 'GongGothicMedium', sans-serif;
+    line-height: 120%;
   }
   div {
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
     font-family: 'Noto Sans KR', sans-serif;
   }
 `;
@@ -135,10 +139,10 @@ const Content = styled.div`
 `;
 const ImageContainer = styled.div`
   flex: 2;
-  z-index: 5;
+  z-index: 1;
   height: 100%;
-  max-width: 500px;
-  max-height: 500px;
+  max-width: 600px;
+  max-height: 600px;
 
   img {
     width: 100%;
@@ -193,7 +197,9 @@ const Landing = () => {
           <Header>
             <p>다 함께 만들어가는</p>
             <p>문제 아카이브</p>
-            <div>SOLUTIONIST</div>
+            <div>
+              <img src="assets/images/LandingLOGO.png" />
+            </div>
           </Header>
           <HeaderContent>
             <p>쉽게 문제를 만들고, 풀고, 공유해보세요.</p>

@@ -65,10 +65,13 @@ const MakeContainer = styled.div`
     align-items: center;
     width: 100%;
     height: 100%;
-    font-size: 1.25rem;
     &:hover {
       box-shadow: 0 -0.25rem 0 0px inset var(--butterscotch);
       animation: ${UnderlineFadeIn} 0.25s ease;
+    }
+    p {
+      font-size: 1.25rem;
+      font-family: 'Righteous', sans-serif;
     }
     @media all and (max-width: 767px) {
       font-size: 1rem;
@@ -89,6 +92,10 @@ const SolveContainer = styled.div`
     &:hover {
       box-shadow: 0 -0.25rem 0 0px inset var(--butterscotch);
       animation: ${UnderlineFadeIn} 0.25s ease;
+    }
+    p {
+      font-size: 1.25rem;
+      font-family: 'Righteous', sans-serif;
     }
     @media all and (max-width: 767px) {
       font-size: 1rem;
@@ -121,6 +128,7 @@ const Login = styled.div`
     align-items: center;
     margin: 0.5rem;
     color: black;
+    font-family: 'Righteous', sans-serif;
   }
   > :first-child {
     @media all and (max-width: 767px) {
