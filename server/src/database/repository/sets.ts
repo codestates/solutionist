@@ -11,8 +11,8 @@ export class SetsRepository extends Repository<sets> {
     return await this.createQueryBuilder('sets')
       .innerJoinAndSelect('sets.collection', 'collections')
       .leftJoinAndSelect('collections.creator', 'users')
-      .leftJoinAndSelect('sets.problem', 'problems')
-      .innerJoinAndSelect('problems.choice', 'choices')
+      //.leftJoinAndSelect('sets.problem', 'problems')
+      //.innerJoinAndSelect('problems.choice', 'choices')
       .where('sets.id = :id', { id: id })
       .getOne();
   }

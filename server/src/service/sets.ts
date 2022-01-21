@@ -25,6 +25,7 @@ export class SetService {
   async selectSet(setId: number) {
     // 세트 검색
     const set = await this.setsRepo.getSet(setId);
+    console.log(set);
     // 세트 검색에 실패하가나 유효하지 않은 경우
     if (!set || !set['collection']) {
       errorGenerator({ msg: 'no matching set id', statusCode: 400 });
@@ -148,7 +149,6 @@ export class SetService {
 
   async findVersion(collectionId: number) {
     const sets = await this.setsRepo.getSetByCollectionId(collectionId);
-    console.log(sets);
     if (!sets) {
       errorGenerator({ msg: 'no matching versions', statusCode: 400 });
     }
