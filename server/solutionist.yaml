@@ -5,8 +5,6 @@ info:
   version: '1.0.0'
 servers:
   - url: 'http://localhost:4000'
-  - url: 'https://solutionist.site'
-
 tags:
   - name: users
     description: Operations about user
@@ -265,7 +263,7 @@ paths:
           required: true
           schema:
             type: string
-          description: The user ID
+          description: The email
       responses:
         '200':
           description: ok
@@ -453,7 +451,7 @@ paths:
                   solvedUserNumber:
                     type: integer
                   averageScore:
-                    type: float
+                    type: number
                   createdAt:
                     type: string
                 example:
@@ -510,7 +508,7 @@ paths:
                   solvedUserNumber:
                     type: integer
                   averageScore:
-                    type: float
+                    type: number
                   createdAt:
                     type: string
                 example:
@@ -546,7 +544,7 @@ paths:
         - search && sets
       summary: create set
       security:
-        - cookieAuth: ~
+        - cookieAuth: []
       requestBody:
         content:
           application/json:
@@ -655,7 +653,7 @@ paths:
         - search && sets
       summary: modify set
       security:
-        - cookieAuth: ~
+        - cookieAuth: []
       requestBody:
         content:
           application/json:
@@ -786,8 +784,15 @@ paths:
       tags:
         - search && sets
       summary: delete set
+      parameters:
+        - in: path
+          name: collectionId
+          required: true
+          schema:
+            type: string
+          description: The user ID
       security:
-        - cookieAuth: ~
+        - cookieAuth: []
       responses:
         201:
           description: Created
@@ -818,11 +823,17 @@ paths:
                   message:
                     type: string
                     default: internal server error
-  /sets/search?title={검색어}:
+  /sets/search:
     get:
       tags:
         - search && sets
-      summary: delete set
+      summary: search set
+      parameters:
+        - name: title
+          in: query
+          description: search title
+          schema:
+            type: string
       responses:
         200:
           description: ok
@@ -847,7 +858,7 @@ paths:
                       solvedUserNumber:
                         type: integer
                       averageScore:
-                        type: float
+                        type: number
                       createdAt:
                         type: string
                 example:
@@ -891,6 +902,14 @@ paths:
       tags:
         - search && sets
       summary: select set
+      description: email
+      parameters:
+        - in: path
+          name: setId
+          required: true
+          schema:
+            type: integer
+          description: The setId
       responses:
         201:
           description: Created
@@ -997,7 +1016,7 @@ paths:
         - search && sets
       summary: record solving
       security:
-        - cookieAuth: ~
+        - cookieAuth: []
       requestBody:
         content:
           application/json:
@@ -1027,7 +1046,7 @@ paths:
                   recordId: 1
                   solver: zzz@naver.com
         400:
-          description: ~
+          description: bad Request
           content:
             application/json:
               schema:
@@ -1083,7 +1102,7 @@ paths:
                 type: object
                 properties:
                   totalRate:
-                    type: float
+                    type: number
                   userChoices:
                     type: array
                     items:
@@ -1125,6 +1144,13 @@ paths:
       tags:
         - search && sets
       summary: submit set
+      parameters:
+        - in: path
+          name: recordId # Note the name is the same as in the path
+          required: true
+          schema:
+            type: integer
+          description: recordId
       requestBody:
         content:
           application/json:
@@ -1132,7 +1158,7 @@ paths:
               type: object
               properties:
                 answerRate:
-                  type: float
+                  type: number
               required:
                 - answerRate
               example:
@@ -1151,7 +1177,7 @@ paths:
                 example:
                   id: 1
         400:
-          description: ~
+          description: bad Request
           content:
             application/json:
               schema:
@@ -1173,6 +1199,13 @@ paths:
       tags:
         - search && sets
       summary: set statics
+      parameters:
+        - in: path
+          name: recordid # Note the name is the same as in the path
+          required: true
+          schema:
+            type: integer
+          description: recordid
       requestBody:
         content:
           application/json:
@@ -1207,7 +1240,7 @@ paths:
                 type: object
                 properties:
                   totalRate:
-                    type: float
+                    type: number
                   userChoices:
                     type: array
                     items:
@@ -1327,7 +1360,7 @@ paths:
                       solvedUserNumber:
                         type: integer
                       averageScore:
-                        type: float
+                        type: number
                       createdAt:
                         type: string
                 example:
@@ -1365,3 +1398,9 @@ paths:
                   message:
                     type: string
                     default: internal server error
+components:
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: accessToken

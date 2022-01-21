@@ -574,7 +574,7 @@ const Solve = () => {
           <SidebarContainer>
             <SideRelative>
               <Sidebar>
-                {set.problems.map((problem, idx) => (
+                {set.problems?.map((problem, idx) => (
                   <SidebarContent
                     key={`sidebar${idx}`}
                     color={
@@ -666,7 +666,7 @@ const Solve = () => {
                     </>
                   ) : (
                     <>
-                      {choice.map((choice, idx) => (
+                      {choice?.map((choice, idx) => (
                         <Choice
                           key={`choiceChecked ${idx + 1}`}
                           backgroundColor={
@@ -727,7 +727,7 @@ const Solve = () => {
                     <div></div>
                     <div>비율</div>
                   </ChartLine>
-                  {choice.map((choice, idx) => (
+                  {choice?.map((choice, idx) => (
                     <ChartLine key={`p${curIdx}c${idx}`}>
                       {isOX ? (
                         idx === 0 ? (
