@@ -52,12 +52,12 @@ const InputBox = styled.div`
   width: 100%;
 
   label {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 500;
     margin-bottom: 10px;
   }
   input {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     border-bottom: 1px solid var(--warm-grey);
   }
 `;
