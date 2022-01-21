@@ -312,7 +312,7 @@ const Make = () => {
       <SidebarContainer>
         <SideRelative>
           <Sidebar>
-            {data.problems.map((problem, idx) => (
+            {data.problems?.map((problem, idx) => (
               <SidebarContent
                 onClick={handleNav}
                 id={idx}
@@ -326,7 +326,7 @@ const Make = () => {
           </Sidebar>
         </SideRelative>
       </SidebarContainer>
-      {data.problems.map((problem, idx) => (
+      {data.problems?.map((problem, idx) => (
         <React.Fragment key={`p&d${idx}`}>
           <MakeProblem
             key={problem.index}
