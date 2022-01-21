@@ -148,6 +148,7 @@ export class SetService {
 
   async findVersion(collectionId: number) {
     const sets = await this.setsRepo.getSetByCollectionId(collectionId);
+    console.log(sets);
     if (!sets) {
       errorGenerator({ msg: 'no matching versions', statusCode: 400 });
     }
