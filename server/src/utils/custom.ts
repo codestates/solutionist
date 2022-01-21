@@ -15,6 +15,17 @@ export const insertIntoObject = (obj: object, key: string, val: number) => {
   return obj;
 };
 
+export const insertAndDeleteInObject = (
+  obj: Object,
+  insertKey: string,
+  insertVal: number,
+  deleteKey: string
+) => {
+  obj[insertKey] = insertVal;
+  delete obj[deleteKey];
+  return obj;
+};
+
 export const convertRawObject = (obj: Object) => {
   return JSON.parse(JSON.stringify(obj));
 };

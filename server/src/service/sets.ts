@@ -6,7 +6,7 @@ import { ProblemsRepository } from '../database/repository/problems';
 import { ChoicesRepository } from '../database/repository/choices';
 import { CollectionsRepository } from '../database/repository/collections';
 import { ISets, IProblems, IChoices } from '../interface/ISets';
-import { insertIntoObject, timestampToLocaleTime } from '../utils/custom';
+import { insertAndDeleteInObject, timestampToLocaleTime } from '../utils/custom';
 
 @Service()
 export class SetService {
@@ -25,7 +25,7 @@ export class SetService {
   async selectSet(setId: number) {
     // 세트 검색
     const set = await this.setsRepo.getSet(setId);
-    console.log(set);
+    //console.log(set);
     // 세트 검색에 실패하가나 유효하지 않은 경우
     if (!set || !set['collection']) {
       errorGenerator({ msg: 'no matching set id', statusCode: 400 });
@@ -105,39 +105,63 @@ export class SetService {
           errorGenerator({ msg: 'empty or invalid question', statusCode: 400 });
         }
         // db에 적합한 형태로 problems 변환 => setId 삽입
-        return insertIntoObject(problem, 'setId', savedSet.id);
+        problem['setId'] = savedSet.id;
+        delete problem['id'];
+
+        const choices = problem['choice'];
+        // 보기가 배열 형태일 경우에만 저장
+        if (!Array.isArray(choices)) {
+          errorGenerator({ msg: 'empty or invalid choices', statusCode: 400 });
+        }
+
+        // 보기가 2개 미만인 경우
+        if (choices.length < 2) {
+          errorGenerator({ msg: 'not enough choices', statusCode: 400 });
+        }
+
+        choices.map((choice) => {
+          // 보기의 index 값이 존재하지 않으면 에러
+          if (!choice.index) {
+            errorGenerator({ msg: 'empty or invalid choice index', statusCode: 400 });
+          }
+          // choices에 problemId 삽입
+          delete choice['id'];
+        });
+
+        return insertAndDeleteInObject(problem, 'setId', savedSet.id, 'id');
       });
 
       // 문제 삽입
       const savedProblems = await this.problemsRepo.save(problemsToSave);
 
-      var choicesToSave = []; // db에 삽입될 형태의 보기 배열
-      // 보기 배열에 problemId 값 삽입
-      savedProblems.forEach((problem) => {
-        const choices = problem['choice'];
-        // 보기가 배열 형태일 경우에만 저장
-        if (Array.isArray(choices)) {
-          // 문제 배열에 setId 값 삽입 후 모든 보기의 배열을 하나로 병합
-          choicesToSave = choicesToSave.concat(
-            choices.map((choice) => {
-              // 보기의 index 값이 존재하지 않으면 에러
-              if (!choice.index) {
-                errorGenerator({ msg: 'empty or invalid choice index', statusCode: 400 });
-              }
-              // choices에 problemId 삽입
-              return insertIntoObject(choice, 'problemId', problem.id);
-            })
-          );
-        }
-      });
+      // var choicesToSave = []; // db에 삽입될 형태의 보기 배열
+      // // 보기 배열에 problemId 값 삽입
+      // savedProblems.forEach((problem) => {
+      //   const choices = problem['choice'];
+      //   // 보기가 배열 형태일 경우에만 저장
+      //   if (Array.isArray(choices)) {
+      //     // 문제 배열에 setId 값 삽입 후 모든 보기의 배열을 하나로 병합
+      //     choicesToSave = choicesToSave.concat(
+      //       choices.map((choice) => {
+      //         // 보기의 index 값이 존재하지 않으면 에러
+      //         if (!choice.index) {
+      //           errorGenerator({ msg: 'empty or invalid choice index', statusCode: 400 });
+      //         }
+      //         // choices에 problemId 삽입
+      //         return insertAndDeleteInObject(choice, 'problemId', problem.id, 'id');
+      //       })
+      //     );
+      //   }
+      // });
 
-      // 보기가 2개 미만인 경우
-      if (choicesToSave.length < 2) {
-        errorGenerator({ msg: 'not enough choices', statusCode: 400 });
-      }
+      // // 보기가 2개 미만인 경우
+      // if (choicesToSave.length < 2) {
+      //   errorGenerator({ msg: 'not enough choices', statusCode: 400 });
+      // }
 
+      //console.log(choicesToSave);
       // 보기 삽입
-      await this.choicesRepo.save(choicesToSave);
+      //await this.choicesRepo.save(choicesToSave);
     }
 
     return savedSet;

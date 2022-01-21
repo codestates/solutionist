@@ -7,12 +7,12 @@ import { solveRecords } from '../entity/solveRecords';
 @EntityRepository(sets)
 export class SetsRepository extends Repository<sets> {
   // set id로 세트 검색
-  async getSet(id: number): Promise<sets> {
+  async getSet(id: number) {
     return await this.createQueryBuilder('sets')
       .innerJoinAndSelect('sets.collection', 'collections')
       .leftJoinAndSelect('collections.creator', 'users')
-      //.leftJoinAndSelect('sets.problem', 'problems')
-      //.innerJoinAndSelect('problems.choice', 'choices')
+      .leftJoinAndSelect('sets.problem', 'problems')
+      .innerJoinAndSelect('problems.choice', 'choices')
       .where('sets.id = :id', { id: id })
       .getOne();
   }

@@ -14,7 +14,6 @@ export interface ISets {
 }
 
 export interface IProblems {
-  id: number;
   index: number;
   question: string;
   answer: number;
@@ -24,7 +23,6 @@ export interface IProblems {
 }
 
 export interface IChoices {
-  id: number;
   index: number;
   content: number;
 }
