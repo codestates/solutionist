@@ -4,6 +4,7 @@ import { ISolve } from '../../interface/ISets';
 import { StatusService } from '../../service/status';
 import errorGenerator from '../../error/errorGenerator';
 import { checkEmptyObject } from '../../utils/custom';
+import { Console } from 'console';
 
 const solve = async (req: Request, res: Response) => {
   // 토큰 인증에 실패했을 경우 = 유저 정보가 없을 경우 => 빈 객체 할당
