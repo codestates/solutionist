@@ -372,19 +372,20 @@ const StyledButton = styled.button`
   border: none;
   background: none;
   cursor: pointer;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   border-radius: 10px;
+  box-shadow: 0 0 0 2px inset black;
   margin-left: -5px;
   width: fit-content;
   height: fit-content;
 
   /* 색상 & 폰트 */
-  color: var(--butterscotch);
-  background-color: #000;
+  background-color: var(--butterscotch);
   cursor: pointer;
   font-family: sans-serif;
   font-size: 1rem;
-  color: #fbb74a;
+  font-weight: 500;
+  color: var(--black);
 
   &:hover {
     opacity: 0.75;
@@ -400,7 +401,7 @@ const Setting = () => {
   }));
   const { username, email, profileImage, type } = userInfo;
 
-  console.log(type);
+  // console.log(type);
 
   // * 회원 탈퇴
   const navigate = useNavigate();
@@ -483,7 +484,7 @@ const Setting = () => {
         if (errCode === 409) {
           setAfterValiNameMsg('변경 전과 같은 닉네임입니다.');
         } else {
-          setAfterValiNameMsg(' 변경을 실패했습니다!');
+          setAfterValiNameMsg('변경을 실패했습니다!');
         }
         console.log('changeUsername 에러캐치', err);
       });
@@ -531,7 +532,7 @@ const Setting = () => {
     (e) => {
       setChangeInfo({ ...changeInfo, newUsername: e.target.value });
       if (e.target.value.length < 3 || e.target.value.length > 10) {
-        setValiNameMsg('3글자 이상 10글자 이하로 입력하세요');
+        setValiNameMsg('3글자 이상 10글자 이하로 입력해주세요!');
         setValiInfo({ ...valiInfo, isNewUsername: false });
       } else {
         setValiNameMsg('올바른 이름 형식입니다 :)');
@@ -566,7 +567,7 @@ const Setting = () => {
       const passwordCurrent = e.target.value;
       if (!passwordRegex.test(passwordCurrent)) {
         setValiPwMsg(
-          `새 비밀번호를 입력해주세요!\n8자리 이상의 숫자+영문자+특수문자를 입력하세요\n사용 가능한 특수문자: !@#$%^*+=-`
+          `새 비밀번호를 입력해주세요!\n숫자+영문자+특수문자로 8자리 이상 입력하세요\n사용 가능한 특수문자: !@#$%^*+=-`
         );
         setValiInfo({ ...valiInfo, isNewPassword: false });
       } else {
@@ -700,11 +701,7 @@ const Setting = () => {
           <EditContainer>
             <LeftSide>계정관리</LeftSide>
             <AccountManagementContainer>
-              {type === 'google' || type === 'kakao' ? (
-                <StyledButton onClick={handleSignOut}>회원 탈퇴</StyledButton>
-              ) : (
-                <StyledButton onClick={handleSignOut}>회원 탈퇴</StyledButton>
-              )}
+              <StyledButton onClick={handleSignOut}>회원 탈퇴</StyledButton>
             </AccountManagementContainer>
           </EditContainer>
         </div>
