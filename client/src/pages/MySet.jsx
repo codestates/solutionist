@@ -5,6 +5,8 @@ import styled from 'styled-components';
 // import Footer from '../components/Footer';
 import SetCardVerTwo from '../components/SetCardVerTwo';
 import MoveTopButton from '../components/MoveTopButton';
+import { Link } from 'react-router-dom';
+import { FaArrowRight } from 'react-icons/fa';
 
 import { getMySetsMade, getMySetsSolved } from '../api/SearchSetAPI';
 
@@ -52,6 +54,10 @@ const CardsContainer = styled.div`
     props.isMadeHidden || props.isSolvedHidden ? '416px' : 'initial'};
   overflow: ${(props) =>
     props.isMadeHidden || props.isSolvedHidden ? 'hidden' : 'initial'};
+`;
+
+const StyledLink = styled(Link)`
+  color: var(--warm-grey);
 `;
 
 const ShowBox = styled.section`
@@ -135,21 +141,30 @@ const MySet = () => {
       <SetsContainer>
         <Header>내가 만든 세트</Header>
         <CardsContainer ref={cardRefMade} isMadeHidden={isMadeHidden}>
-          {mySetsMade.map((made) => (
-            <SetCardVerTwo
-              isMade={true}
-              averageScore={made.averageScore}
-              id={made.id}
-              createdAt={made.createdAt}
-              description={made.descriptoin}
-              solvedUserNumber={made.solvedUserNumber}
-              title={made.title}
-              key={made.id}
-              collectionId={made.collectionId}
-              // creator={made.creator}
-              // updatedAt={made.updatedAt}
-            />
-          ))}
+          {mySetsMade.length === 0 ? (
+            <p>
+              <StyledLink to="/make">
+                내가 만든 세트가 없습니다. 만들러 가볼까요?{' '}
+                <FaArrowRight size="0.75rem" />
+              </StyledLink>
+            </p>
+          ) : (
+            mySetsMade.map((made) => (
+              <SetCardVerTwo
+                isMade={true}
+                averageScore={made.averageScore}
+                id={made.id}
+                createdAt={made.createdAt}
+                description={made.descriptoin}
+                solvedUserNumber={made.solvedUserNumber}
+                title={made.title}
+                key={made.id}
+                collectionId={made.collectionId}
+                // creator={made.creator}
+                // updatedAt={made.updatedAt}
+              />
+            ))
+          )}
         </CardsContainer>
       </SetsContainer>
       <ShowBox onClick={handleMadeHidden}>
@@ -159,21 +174,29 @@ const MySet = () => {
       <SetsContainer>
         <Header>내가 푼 세트</Header>
         <CardsContainer ref={cardRefSolve} isSolvedHidden={isSolvedHidden}>
-          {mySetsSolved.map((solve) => (
-            <SetCardVerTwo
-              isMade={false}
-              averageScore={solve.averageScore}
-              id={solve.id}
-              createdAt={solve.createdAt}
-              description={solve.descriptoin}
-              solvedUserNumber={solve.solvedUserNumber}
-              title={solve.title}
-              key={solve.id}
-              recordId={solve.recordId}
-              // creator={solve.creator}
-              // updatedAt={solve.updatedAt}
-            />
-          ))}
+          {mySetsSolved.length === 0 ? (
+            <p>
+              <StyledLink to="/solve">
+                내가 푼 세트가 없습니다. 풀러 가볼까요? <FaArrowRight size="0.75rem" />
+              </StyledLink>
+            </p>
+          ) : (
+            mySetsSolved.map((solve) => (
+              <SetCardVerTwo
+                isMade={false}
+                averageScore={solve.averageScore}
+                id={solve.id}
+                createdAt={solve.createdAt}
+                description={solve.descriptoin}
+                solvedUserNumber={solve.solvedUserNumber}
+                title={solve.title}
+                key={solve.id}
+                recordId={solve.recordId}
+                // creator={solve.creator}
+                // updatedAt={solve.updatedAt}
+              />
+            ))
+          )}
         </CardsContainer>
       </SetsContainer>
       <ShowBox onClick={handleSolvedHidden}>
