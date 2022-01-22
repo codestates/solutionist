@@ -300,17 +300,21 @@ const SetCardVerTwo = ({
             </SetInfo>
             <IconContainer>
               <StatsContainer>
+                {averageScore ? (
+                  <Stat>
+                    <Icon>
+                      <ChartIcon />
+                    </Icon>
+                    <p>{Math.round(averageScore)}점</p>
+                  </Stat>
+                ) : (
+                  ''
+                )}
                 <Stat>
                   <Icon>
                     <UserIcon />
                   </Icon>
                   <p>{solvedUserNumber}명</p>
-                </Stat>
-                <Stat>
-                  <Icon>
-                    <ChartIcon />
-                  </Icon>
-                  <p>{Math.round(averageScore)}점</p>
                 </Stat>
               </StatsContainer>
             </IconContainer>
@@ -331,17 +335,21 @@ const SetCardVerTwo = ({
               </SetInfo>
               <IconContainer>
                 <StatsContainer>
+                  {averageScore ? (
+                    <Stat>
+                      <Icon>
+                        <ChartIcon />
+                      </Icon>
+                      <p>{Math.round(averageScore)}점</p>
+                    </Stat>
+                  ) : (
+                    ''
+                  )}
                   <Stat>
                     <Icon>
                       <UserIcon />
                     </Icon>
-                    <p>{solvedUserNumber}</p>
-                  </Stat>
-                  <Stat>
-                    <Icon>
-                      <ChartIcon />
-                    </Icon>
-                    <p>{Math.round(averageScore)}</p>
+                    <p>{solvedUserNumber}명</p>
                   </Stat>
                 </StatsContainer>
               </IconContainer>

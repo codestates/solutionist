@@ -51,7 +51,7 @@ const CardsContainer = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   max-height: ${(props) =>
-    props.isMadeHidden || props.isSolvedHidden ? '416px' : 'initial'};
+    props.isMadeHidden || props.isSolvedHidden ? '208px' : 'initial'};
   overflow: ${(props) =>
     props.isMadeHidden || props.isSolvedHidden ? 'hidden' : 'initial'};
 `;
@@ -132,9 +132,9 @@ const MySet = () => {
   const cardRefSolve = useRef(null);
 
   useEffect(() => {
-    if (cardRefMade.current?.scrollHeight > 416) setShowMade(true);
+    if (cardRefMade.current?.scrollHeight > 208) setShowMade(true);
     else setShowMade(false);
-    if (cardRefSolve.current?.scrollHeight > 416) setshowSolve(true);
+    if (cardRefSolve.current?.scrollHeight > 208) setshowSolve(true);
     else setshowSolve(false);
   });
 
