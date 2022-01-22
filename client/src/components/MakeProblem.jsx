@@ -90,44 +90,23 @@ const Icon = styled.div`
       fill: black;
     }
   }
-  :focus {
-    svg {
-      fill: var(--orangey-yellow);
-    }
-  }
 
-  .arrow_box {
+  > p {
     display: none;
     position: relative;
     width: 100px;
     padding: 10px;
     left: -50px;
     top: -70px;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
     border-radius: 8px;
     background: var(--black);
     color: var(--butterscotch);
+    font-weight: bold;
     font-size: 1rem;
     text-align: center;
   }
 
-  /* .arrow_box:after {
-    position: relative;
-    bottom: 100%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    margin-left: -10px;
-    border: solid transparent;
-    border-color: rgba(51, 51, 51, 0);
-    border-bottom-color: #666;
-    border-width: 10px;
-    pointer-events: none;
-    content: ' ';
-  } */
-
-  svg:hover + p.arrow_box {
+  svg:hover + p {
     display: block;
   }
 `;
@@ -174,6 +153,10 @@ const Counter = styled.div`
   justify-content: center;
   grid-area: counter;
   width: 100%;
+  * {
+    font-family: 'Righteous';
+    font-size: 1.5rem;
+  }
 `;
 const Plus = styled.div`
   width: 2rem;
@@ -185,7 +168,7 @@ const Plus = styled.div`
   user-select: none;
   cursor: pointer;
   p {
-    margin: 0.5rem 0;
+    margin: 0.25rem 0;
     text-align: center;
     color: white;
   }
@@ -200,7 +183,7 @@ const Minus = styled.div`
   cursor: pointer;
 
   p {
-    margin: 0.5rem 0;
+    margin: 0.25rem 0;
     text-align: center;
     color: white;
   }
@@ -348,12 +331,15 @@ const MakeProblem = ({ problem, data, setData, idx, navRefs }) => {
                 fill="var(--warm-grey)"
                 fill={problem.answer === 0 ? 'var(--orangey-yellow)' : 'var(--warm-grey)'}
               />
+              <p>정답 없음</p>
             </Icon>
             <Icon onClick={handleToggle}>
               <ListIcon fill="var(--warm-grey)" />
+              <p>다지선다 전환</p>
             </Icon>
             <Icon onClick={handleClick} id="trash">
               <TrashIcon fill="var(--warm-grey)" />
+              <p>문제 삭제</p>
             </Icon>
           </IconContainer>
           <OxChoices>
@@ -394,13 +380,15 @@ const MakeProblem = ({ problem, data, setData, idx, navRefs }) => {
                 id="survey"
                 fill={problem.answer === 0 ? 'var(--orangey-yellow)' : 'var(--warm-grey)'}
               />
+              <p>정답 없음</p>
             </Icon>
             <Icon onClick={handleToggle}>
               <OxIcon fill="var(--warm-grey)" />
-              {/* <p className="arrow_box">OX퀴즈 만들기</p> */}
+              <p>OX퀴즈 전환</p>
             </Icon>
             <Icon onClick={handleClick} id="trash">
               <TrashIcon fill="var(--warm-grey)" />
+              <p>문제 삭제</p>
             </Icon>
           </IconContainer>
           <ChoicesContainer>
@@ -433,15 +421,6 @@ const MakeProblem = ({ problem, data, setData, idx, navRefs }) => {
               </Choice>
             ))}
           </ChoicesContainer>
-          {/* <CounterContainer>
-              <CountController onClick={handleClick} id="decrease">
-              <DecreaseIcon id="decrease" fill="var(--warm-grey)" />
-              </CountController>
-              <Counter>{problem.choices.length}</Counter>
-              <CountController onClick={handleClick} id="increase">
-              <IncreaseIcon id="increase" fill="var(--warm-grey)" />
-              </CountController>
-            </CounterContainer> */}
           <Counter>
             <Minus onClick={handleClick} id="decrease">
               <p id="decrease">-</p>
