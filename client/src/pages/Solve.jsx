@@ -418,7 +418,22 @@ const SidebarContent = styled.div`
     }
   }
 `;
-
+const MessageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  margin: 1rem 25%;
+  color: var(--warm-grey);
+  font-weight: bold;
+  @media all and (max-width: 1023px) {
+    width: 60%;
+    margin: 1rem 20%;
+  }
+  @media all and (max-width: 767px) {
+    width: calc(100% - 2rem);
+    margin: 0.5rem 1rem;
+  }
+`;
 const Solve = () => {
   const [set, setSet] = useState({
     title: '',
@@ -438,6 +453,7 @@ const Solve = () => {
   const [isStat, setIsStat] = useState(false);
   const [isSolving, setIsSolving] = useState(false);
   const [setInfo, setSetInfo] = useState({});
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     axios
@@ -449,6 +465,7 @@ const Solve = () => {
           newStat.push(Array(el.choice.length).fill(0));
         });
         setStats([...newStat]);
+        setIsChecked(Array(res.data.problems.length).fill(0));
       });
   }, []);
 
@@ -472,11 +489,12 @@ const Solve = () => {
   };
 
   const handleCheck = () => {
-    if (!userChoices[curIdx]) return console.log('답을 입력해주세요');
+    if (!userChoices[curIdx]) return setMessage('답을 입력해주세요');
+    if (isChecked[curIdx]) return setMessage('이미 제출된 문제입니다.');
 
     const newIsCheck = [...isChecked];
-
     newIsCheck[curIdx] = true;
+
     setIsChecked(newIsCheck);
 
     axios
@@ -499,38 +517,44 @@ const Solve = () => {
   const handlePrev = () => {
     if (curIdx > 0) {
       setCurIdx(curIdx - 1);
+      setMessage('');
     }
   };
   const handleNext = () => {
     if (curIdx < set.problems.length - 1) {
       setCurIdx(curIdx + 1);
+      setMessage('');
     }
   };
   const handleSubmit = () => {
-    let count = 0;
+    let ansNum = 0;
     let total = set.problems.filter((el) => el.answer !== 0).length;
 
     set.problems.map((problem, idx) => {
-      if (problem.answer === userChoices[idx].choice) {
-        count++;
+      if (problem.answer === userChoices[idx]?.choice) {
+        ansNum++;
       }
     });
 
-    axios
-      .patch(
-        `${process.env.SERVER_URL}solve-records/${setInfo.recordId}`,
-        {
-          answerRate: !total
-            ? -1
-            : Math.round(
-                (count / set.problems.filter((el) => el.answer !== 0).length) * 100
-              ),
-        },
-        { withCredentials: true }
-      )
-      .then(() => {
-        window.location.href = `/result/${set.setId}/${setInfo.recordId}`;
-      });
+    if (isChecked.every((el) => el)) {
+      axios
+        .patch(
+          `${process.env.SERVER_URL}solve-records/${setInfo.recordId}`,
+          {
+            answerRate: !total
+              ? -1
+              : Math.round(
+                  (ansNum / set.problems.filter((el) => el.answer !== 0).length) * 100
+                ),
+          },
+          { withCredentials: true }
+        )
+        .then(() => {
+          window.location.href = `/result/${set.setId}/${setInfo.recordId}`;
+        });
+    } else {
+      setMessage('모든 문제의 답을 제출해주세요.');
+    }
   };
   const handleStart = () => {
     axios
@@ -544,7 +568,6 @@ const Solve = () => {
         setSetInfo(res.data);
       });
   };
-  console.log(set);
 
   return (
     <SolveContainer>
@@ -873,6 +896,7 @@ const Solve = () => {
           </ButtonContainer>
         </>
       )}
+      <MessageContainer>{message}</MessageContainer>
     </SolveContainer>
   );
 };
