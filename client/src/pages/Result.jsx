@@ -147,7 +147,7 @@ const Sidebar = styled.div`
   margin-left: 1rem;
   padding: 0 1rem;
   border-left: 2px dashed var(--warm-grey);
-  color: var(--warm-grey);
+  color: ${(props) => (props.color ? '' : '')};
   width: calc(100% - 4rem - 2px);
   div {
     font-size: 0.75rem;
@@ -156,7 +156,7 @@ const Sidebar = styled.div`
 const SidebarContent = styled.div`
   margin-bottom: 0.25rem;
   display: flex;
-  color: ${(props) => props.color};
+  color: ${(props) => (props.color ? props.color : 'var(--warm-grey)')};
   div {
     font-family: 'GowunDodum-Regular', sans-serif;
     font-weight: ${(props) => props.weight};
@@ -165,14 +165,60 @@ const SidebarContent = styled.div`
     width: 100%;
     line-height: 120%;
     user-select: none;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     cursor: pointer;
     :first-child {
       width: auto;
       margin-right: 0.5rem;
     }
+    :last-child {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+`;
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  width: 50%;
+  margin: 0 25% 0 25%;
+  color: var(--warm-grey);
+  font-size: 3rem;
+  opacity: 0.5;
+  user-select: none;
+  div {
+    flex: 1;
+    p {
+      margin: 1rem 0;
+      font-family: 'Righteous', sans-serif;
+    }
+    * {
+      cursor: pointer;
+      :hover {
+        color: black;
+      }
+    }
+  }
+  svg {
+    margin: 1rem 0;
+  }
+  div:first-child {
+    text-align: left;
+  }
+  div:last-child {
+    text-align: right;
+  }
+
+  @media all and (max-width: 1023px) {
+    width: 60%;
+    margin: 0 15% 0 25%;
+  }
+  @media all and (max-width: 767px) {
+    width: calc(100% - 2rem);
+    margin: 0 1rem;
+    font-size: 2rem;
   }
 `;
 
@@ -183,10 +229,10 @@ const Result = () => {
     description: '',
     problems: [],
   });
-  const [curPos, setCurPos] = useState(0);
+  const [curPos, setCurPos] = useState(1);
   const makeRef = useRef(null);
   const navRefs = useRef([0]);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({});
 
   useEffect(() => {
     axios.get(`${process.env.SERVER_URL}sets/${setId}`).then((res) => {
@@ -200,33 +246,32 @@ const Result = () => {
   }, []);
 
   const handleNav = (e) => {
-    navRefs.current[e.target.id].scrollIntoView({ behavior: 'smooth' });
+    navRefs.current[e.target.id].scrollIntoView({ behavior: 'smooth', block: 'center' });
   };
 
-  const [Qpos, setQpos] = useState([]);
-
-  useEffect(() => {
-    const arr = [0];
-    navRefs.current
-      .map((el) => {
-        if (el) return el.offsetTop;
-      })
-      .reduce((acc, cur) => {
-        if (!isNaN(cur)) {
-          arr.push((cur + acc) / 2);
-          return cur;
-        }
-      });
-    setQpos(arr);
-  }, [set]);
-
-  const handleScroll = (e) => {
-    for (let i = 0; i < Qpos.length; i++) {
-      if (Qpos[i] - 100 < makeRef.current.scrollTop) {
-        setCurPos(i);
+  const handleScroll = (pos) => {
+    for (let i = 0; i < pos.length + 1; i++) {
+      if (window.scrollY + window.innerHeight / 2 < pos[i]) {
+        return setCurPos(i - 1);
       }
     }
   };
+
+  const listenerScroll = () => handleScroll(questionPos);
+  const questionPos = [0];
+
+  useEffect(() => {
+    navRefs.current.map((el) => {
+      if (el) {
+        questionPos.push(el.offsetTop);
+      }
+    });
+
+    questionPos.push(document.documentElement.scrollHeight);
+
+    document.addEventListener('scroll', listenerScroll);
+    return () => document.removeEventListener('scroll', listenerScroll);
+  }, [set]);
 
   let count = 0;
   let total = set.problems.filter((el) => el.answer !== 0).length;
@@ -239,7 +284,7 @@ const Result = () => {
   });
 
   return (
-    <MakeContainer onScroll={handleScroll} ref={makeRef}>
+    <MakeContainer ref={makeRef}>
       <Header>
         <p>세트 결과</p>
       </Header>
@@ -268,7 +313,16 @@ const Result = () => {
                 onClick={handleNav}
                 id={idx}
                 key={`#Q${idx + 1}`}
-                weight={curPos === idx ? 'bold' : 'normal'}
+                weight={curPos - 1 === idx ? 'bold' : 'normal'}
+                color={
+                  data.userChoices
+                    ? data.userChoices[idx]?.choice === set.problems[idx]?.answer
+                      ? 'var(--vibrant-green)'
+                      : set.problems[idx]?.answer === 0
+                      ? 'var(--warm-grey)'
+                      : 'var(--red)'
+                    : ''
+                }
               >
                 <div id={idx}>{idx + 1}</div>
                 <div id={idx}>{problem.question}</div>
@@ -290,6 +344,11 @@ const Result = () => {
           <Divider />
         </React.Fragment>
       ))}
+      <ButtonContainer>
+        <div>
+          <p>Myset</p>
+        </div>
+      </ButtonContainer>
     </MakeContainer>
   );
 };

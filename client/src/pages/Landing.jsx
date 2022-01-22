@@ -21,13 +21,22 @@ const SectionContainer = styled.div`
 `;
 const Section = styled.div`
   padding: 2rem;
+  width: calc(100vw - 4rem);
   height: calc(100vh - 7rem);
   display: flex;
   align-items: center;
-  justify-content: center;
   font-size: 5rem;
   scroll-snap-align: center;
   justify-content: space-evenly;
+  overflow: hidden;
+
+  :nth-child(2n) {
+    flex-direction: row-reverse;
+    background: white;
+  }
+  img {
+    height: 100%;
+  }
 
   :first-child {
     position: relative;
@@ -48,19 +57,12 @@ const Section = styled.div`
       position: absolute;
     }
   }
-  flex-direction: row-reverse;
-  @media all and (max-width: 1023px) {
-    flex-direction: column;
-    justify-content: center;
+
+  @media all and (orientation: portrait) {
+    flex-direction: column-reverse;
     :nth-child(2n) {
       flex-direction: column-reverse;
     }
-  }
-  :nth-child(2n) {
-    background: white;
-  }
-  img {
-    height: 100%;
   }
 `;
 
@@ -72,7 +74,6 @@ const HeaderContainer = styled.div`
 const Header = styled.div`
   font-size: 2rem;
   margin-bottom: 2rem;
-  /* animation: ${FadeIn} 1s ease; */
   p {
     font-size: 1.75rem;
     word-wrap: break-word;
@@ -89,6 +90,18 @@ const Header = styled.div`
   img {
     margin-top: 0.25rem;
     height: 3rem;
+  }
+  @media all and (max-width: 767px) {
+    p {
+      font-size: 1.5rem;
+      :nth-child(2) {
+        font-size: 2.5rem;
+      }
+    }
+    img {
+      margin-top: 0.25rem;
+      height: 2.5rem;
+    }
   }
 `;
 const HeaderContent = styled.div`
@@ -110,6 +123,10 @@ const TextContainer = styled.div`
     margin: 0;
     width: 100%;
   }
+  @media all and (max-width: 767px) {
+    font-size: 0.75rem;
+    width: auto;
+  }
 `;
 const Subheader = styled.div`
   font-size: 3rem;
@@ -127,6 +144,9 @@ const Subheader = styled.div`
     font-size: 1.25rem;
     font-family: 'Noto Sans KR', sans-serif;
   }
+  @media all and (max-width: 767px) {
+    font-size: 2rem;
+  }
 `;
 const Content = styled.div`
   p {
@@ -138,12 +158,14 @@ const Content = styled.div`
   }
 `;
 const ImageContainer = styled.div`
-  flex: 2;
   z-index: 1;
   height: 100%;
   max-width: 600px;
   max-height: 600px;
 
+  @media all and (orientation: portrait) {
+    height: 50vh;
+  }
   img {
     width: 100%;
     height: 100%;
@@ -190,9 +212,6 @@ const Landing = () => {
   return (
     <SectionContainer ref={(el) => (secRef.current[0] = el)} onWheel={handleWheel}>
       <Section ref={(el) => (secRef.current[1] = el)}>
-        <ImageContainer>
-          <img src="assets/images/Section1.png" />
-        </ImageContainer>
         <HeaderContainer>
           <Header>
             <p>다 함께 만들어가는</p>
@@ -205,6 +224,9 @@ const Landing = () => {
             <p>쉽게 문제를 만들고, 풀고, 공유해보세요.</p>
           </HeaderContent>
         </HeaderContainer>
+        <ImageContainer>
+          <img style={{ margin: '0 0 0 1rem' }} src="assets/images/Section1.png" />
+        </ImageContainer>
       </Section>
       <Section ref={(el) => (secRef.current[2] = el)}>
         <TextContainer>
@@ -227,9 +249,6 @@ const Landing = () => {
         </ImageContainer>
       </Section>
       <Section ref={(el) => (secRef.current[3] = el)}>
-        <ImageContainer>
-          <img src="assets/images/Section3.gif" />
-        </ImageContainer>
         <TextContainer>
           <Subheader>
             <div>원하는 문제가 없을땐...</div>
@@ -246,6 +265,9 @@ const Landing = () => {
             </Chicken>
           </Link>
         </TextContainer>
+        <ImageContainer>
+          <img src="assets/images/Section3.gif" />
+        </ImageContainer>
       </Section>
       <Section ref={(el) => (secRef.current[4] = el)}>
         <TextContainer>
@@ -263,13 +285,10 @@ const Landing = () => {
         </ImageContainer>
       </Section>
       <Section ref={(el) => (secRef.current[5] = el)}>
-        <ImageContainer>
-          <img src="assets/images/Section5.gif" />
-        </ImageContainer>
         <TextContainer>
           <Subheader>
             <p>모두 다 함께</p>
-            <p>문제를 만들수 있어요.</p>
+            <p>문제를 만들 수 있어요.</p>
           </Subheader>
           <Content>
             <p>이미 작성 되어있는 문제 모음에</p>
@@ -282,6 +301,9 @@ const Landing = () => {
             </Chicken>
           </Link>
         </TextContainer>
+        <ImageContainer>
+          <img src="assets/images/Section5.gif" />
+        </ImageContainer>
       </Section>
       <Last ref={(el) => (secRef.current[6] = el)}>
         <Footer />
