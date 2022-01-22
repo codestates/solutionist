@@ -1,5 +1,5 @@
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/46926683/150641877-5ed91e50-55d4-4690-96e7-bde3a45a72ae.png" alt="solutionist" width="35%"/>  
+	<img src="https://user-images.githubusercontent.com/46926683/150643874-19112234-dbaa-4aff-8d85-f818148ec41f.png" alt="solutionist" width="35%"/>  
 </p>  
   
 <p align="center">
@@ -18,33 +18,32 @@
 
 ## 주요 기능
 
-<details open>
+<details>
   <summary>
     랜딩 페이지
   </summary>
   <div dir ="auto">
     <br>
     <a>
-      <img src="https://user-images.githubusercontent.com/46926683/150641877-5ed91e50-55d4-4690-96e7-bde3a45a72ae.png" width="550" style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150641877-5ed91e50-55d4-4690-96e7-bde3a45a72ae.png" width="550" style="max-width: 60%;">
     </a>
   </div>
 </details>
-<details open>
+<details>
   <summary>
     아카이브 만들기
   </summary>
   <div dir ="auto">
     <br>
     <a>
-      <img src="https://user-images.githubusercontent.com/46926683/150643654-8f2bfea6-e074-4fbc-ad19-100445e4ec16.png" width="550" style="max-width: 100%;">
-      <img src="https://user-images.githubusercontent.com/46926683/150643669-a2b60833-ea94-4016-870d-4abdd671b24a.png" width="550" style="max-width: 100%;">
-      <img src="https://user-images.githubusercontent.com/46926683/150643672-5609de97-08af-4143-97a4-163e6412b9ed.png" width="550" style="max-width: 100%;">
-      <img src="https://user-images.githubusercontent.com/46926683/150643678-f6b37c5a-043c-486d-89b4-835dbe1ae919.png" width="550" style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150643654-8f2bfea6-e074-4fbc-ad19-100445e4ec16.png" width="550" style="max-width: 60%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150643669-a2b60833-ea94-4016-870d-4abdd671b24a.png" width="550" style="max-width: 60%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150643672-5609de97-08af-4143-97a4-163e6412b9ed.png" width="550" style="max-width: 60%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150643678-f6b37c5a-043c-486d-89b4-835dbe1ae919.png" width="550" style="max-width: 60%;">
     </a>
   </div>
 </details>
-  
-
+<br>
 
 |**이름**|포지션|Github|
 |:---:|:---:|:---:|
