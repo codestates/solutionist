@@ -143,7 +143,6 @@ SOLUTIONIST는 객관식, OX 문제 그리고 정답이 없는 설문조사를 �
 |위다빈|Back-End|[widalida26](https://github.com/widalida26)|
 |김동언|Back-End|[inde153](https://github.com/inde153)|
 
-[Worklog로 이동하기](https://github.com/codestates/solutionist/wiki/%E2%9C%8F%EF%B8%8F-Worklog)
 <br>
 <br>
 
@@ -152,4 +151,6 @@ SOLUTIONIST는 객관식, OX 문제 그리고 정답이 없는 설문조사를 �
 ***
 
 
-<a id = "txt" href="https://solutionist.site" target="_blank"><img src="https://user-images.githubusercontent.com/46926683/150649296-d9949599-33fc-4aca-9258-04e733320067.png" width="17" style="max-width: 100%;">체험하러가기</a>
+<a id = "txt" href="https://solutionist.site" target="_blank"><img src="https://user-images.githubusercontent.com/46926683/150649296-d9949599-33fc-4aca-9258-04e733320067.png" width="17" style="max-width: 100%;"> 사이트 이동</a>
+<a id = "txt" href="https://solutionist.site" target="_blank"><img src="https://user-images.githubusercontent.com/46926683/150649296-d9949599-33fc-4aca-9258-04e733320067.png" width="17" style="max-width: 100%;"> 위키 이동</a>
+
