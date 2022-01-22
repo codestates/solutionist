@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 const MakeContainer = styled.div`
   position: relative;
   height: calc(100% - 4rem - 70px);
-  padding: 1rem 0 2rem;
+  padding: 1rem 0 14rem;
   max-width: 1216px;
   margin: 0 auto;
 
@@ -28,7 +28,7 @@ const Header = styled.div`
 
   @media all and (max-width: 1023px) {
     width: 60%;
-    margin: 0 15% 0.5rem 25%;
+    margin: 0 20% 0.5rem;
   }
   @media all and (max-width: 767px) {
     width: calc(100% - 2rem);
@@ -48,7 +48,7 @@ const Title = styled.div`
 
   @media all and (max-width: 1023px) {
     width: 60%;
-    margin: 0 15% 0 25%;
+    margin: 0 20%;
   }
   @media all and (max-width: 767px) {
     width: calc(100% - 2rem);
@@ -68,7 +68,7 @@ const Desc = styled.div`
 
   @media all and (max-width: 1023px) {
     width: 60%;
-    margin: 0.5rem 15% 0.5rem 25%;
+    margin: 0.5rem 20%;
   }
   @media all and (max-width: 767px) {
     width: calc(100% - 2rem);
@@ -98,7 +98,7 @@ const Rate = styled.div`
 
   @media all and (max-width: 1023px) {
     width: 60%;
-    margin: 1rem 15% 1rem 25%;
+    margin: 1rem 20%;
   }
   @media all and (max-width: 767px) {
     width: calc(100% - 2rem);
@@ -117,7 +117,7 @@ const Divider = styled.div`
 
   @media all and (max-width: 1023px) {
     width: 60%;
-    margin: 0 15% 0 25%;
+    margin: 0 20%;
   }
   @media all and (max-width: 767px) {
     width: calc(100% - 2rem);
@@ -177,51 +177,6 @@ const SidebarContent = styled.div`
     }
   }
 `;
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  width: 50%;
-  margin: 0 25% 0 25%;
-  color: var(--warm-grey);
-  font-size: 3rem;
-  opacity: 0.5;
-  user-select: none;
-  div {
-    flex: 1;
-    p {
-      margin: 1rem 0;
-      font-family: 'Righteous', sans-serif;
-    }
-    * {
-      cursor: pointer;
-      :hover {
-        color: black;
-      }
-    }
-  }
-  svg {
-    margin: 1rem 0;
-  }
-  div:first-child {
-    text-align: left;
-  }
-  div:last-child {
-    text-align: right;
-  }
-
-  @media all and (max-width: 1023px) {
-    width: 60%;
-    margin: 0 15% 0 25%;
-  }
-  @media all and (max-width: 767px) {
-    width: calc(100% - 2rem);
-    margin: 0 1rem;
-    font-size: 2rem;
-  }
-`;
-
 const Result = () => {
   const { setId, recordId } = useParams();
   const [set, setSet] = useState({
@@ -344,11 +299,6 @@ const Result = () => {
           <Divider />
         </React.Fragment>
       ))}
-      <ButtonContainer>
-        <div>
-          <p>Myset</p>
-        </div>
-      </ButtonContainer>
     </MakeContainer>
   );
 };

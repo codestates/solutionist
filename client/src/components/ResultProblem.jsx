@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-import { FaChartBar } from 'react-icons/fa';
 import OIcon from '../icons/O';
 import XIcon from '../icons/X';
 
@@ -17,7 +16,7 @@ const ProblemContainer = styled.div`
     'statIcon explanation .';
 
   @media all and (max-width: 1023px) {
-    grid-template-columns: 25% 60% 15%;
+    grid-template-columns: 20% 60% 20%;
   }
   @media all and (max-width: 767px) {
     margin: 0 1rem;
@@ -164,21 +163,6 @@ const ChartLine = styled.div`
     text-align: right;
   }
 `;
-const ChartIconContainer = styled.div`
-  position: relative;
-`;
-const ChartIcon = styled.div`
-  position: absolute;
-  right: 0.5rem;
-  font-size: 3rem;
-  color: ${(props) => (props.isStat ? 'var(--orangey-yellow)' : 'var(--warm-grey-50)')};
-
-  @media all and (max-width: 767px) {
-    font-size: 1.75rem;
-    margin-right: 0;
-    position: initial;
-  }
-`;
 const ChartStatNum = styled.div`
   text-align: right;
 `;
@@ -208,11 +192,6 @@ const ResultProblem = ({ idx, problem, navRefs, data }) => {
         }
       >
         <p>{index}</p>
-        <ChartIconContainer>
-          <ChartIcon onClick={() => setIsStat(!isStat)} isStat={isStat}>
-            <FaChartBar />
-          </ChartIcon>
-        </ChartIconContainer>
       </ProblemNum>
       <Question>{problem.question}</Question>
       <ChoicesContainer>

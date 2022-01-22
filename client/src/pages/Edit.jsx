@@ -10,7 +10,7 @@ import { FaPlusSquare, FaSave } from 'react-icons/fa';
 const MakeContainer = styled.div`
   position: relative;
   height: calc(100% - 4rem - 70px);
-  padding: 1rem 0 2rem;
+  padding: 1rem 0 7rem;
   max-width: 1216px;
   margin: 0 auto;
 
@@ -22,7 +22,7 @@ const Header = styled.div`
   display: flex;
   justify-content: space-between;
   width: 50%;
-  margin: 0 25% 0.5rem 25%;
+  margin: 0 25% 0.5rem;
   font-size: 1rem;
   color: var(--warm-grey);
   user-select: none;
@@ -35,7 +35,7 @@ const Header = styled.div`
 
   @media all and (max-width: 1023px) {
     width: 60%;
-    margin: 0 15% 0.5rem 25%;
+    margin: 0 20% 0.5rem;
   }
   @media all and (max-width: 767px) {
     width: calc(100% - 2rem);
@@ -48,7 +48,7 @@ const Title = styled.textarea`
   align-items: center;
   width: 50%;
   height: 39px;
-  margin: 0 25% 0 25%;
+  margin: 0 25%;
   line-height: 120%;
   font-size: 2rem;
   font-weight: bold;
@@ -58,7 +58,7 @@ const Title = styled.textarea`
 
   @media all and (max-width: 1023px) {
     width: 60%;
-    margin: 0 15% 0 25%;
+    margin: 0 20%;
   }
   @media all and (max-width: 767px) {
     width: calc(100% - 2rem);
@@ -81,7 +81,7 @@ const Desc = styled.textarea`
 
   @media all and (max-width: 1023px) {
     width: 60%;
-    margin: 0.5rem 15% 1rem 25%;
+    margin: 0.5rem 20% 1rem;
   }
   @media all and (max-width: 767px) {
     width: calc(100% - 2rem);
@@ -98,7 +98,7 @@ const Divider = styled.div`
 
   @media all and (max-width: 1023px) {
     width: 60%;
-    margin: 0 15% 0 25%;
+    margin: 0 20%;
   }
   @media all and (max-width: 767px) {
     width: calc(100% - 2rem);
@@ -153,7 +153,7 @@ const ButtonContainer = styled.div`
   }
   @media all and (max-width: 1023px) {
     width: 60%;
-    margin: 0 15% 0 25%;
+    margin: 0 20%;
   }
   @media all and (max-width: 767px) {
     width: calc(100% - 2rem);
@@ -338,6 +338,7 @@ const Edit = () => {
         <p onClick={() => setVersionOn(!versionOn)}>이전 버전으로 되돌리기</p>
       </Header>
       <Title
+        spellCheck={false}
         placeholder="세트 제목을 입력해주세요."
         value={data.title}
         onChange={handleChange}
@@ -345,6 +346,7 @@ const Edit = () => {
         onInput={autoGrow}
       />
       <Desc
+        spellCheck={false}
         placeholder="세트 설명을 입력해주세요."
         value={data.description}
         onChange={handleChange}
