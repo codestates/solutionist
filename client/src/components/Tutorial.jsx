@@ -8,22 +8,18 @@ const Container = styled.div`
   justify-content: center;
   background-color: var(--light--gray);
   border-radius: 4px;
-
   width: 50%;
-  height: 400px;
   margin: 1rem 25% 0;
+  overflow: hidden;
+  border: 2px solid var(--warm-grey-50);
 
   @media all and (max-width: 1023px) {
     width: 60%;
-    margin: 0 auto;
+    margin: 1rem auto 0;
   }
   @media all and (max-width: 767px) {
     width: calc(100% - 2rem);
-    margin: 0 1rem;
-  }
-
-  @media (max-width: 767px) {
-    display: none;
+    margin: 1rem 1rem 0;
   }
 `;
 
@@ -67,7 +63,7 @@ const MoveBtnNext = styled.button`
   height: 4rem;
 
   right: 11rem;
-  z-index: 999;
+  z-index: 900;
 
   @media all and (max-width: 1023px) {
     right: 4rem;
@@ -78,7 +74,7 @@ const MoveBtnNext = styled.button`
 `;
 
 const ImageContainer = styled.div`
-  width: 400%;
+  width: 100%;
   height: 100%;
 `;
 
@@ -88,6 +84,7 @@ const ImageList = styled.ul`
   display: flex;
   align-items: center;
   overflow: hidden;
+  transition: 0.5s ease;
 `;
 
 const ImageItem = styled.li`
@@ -104,6 +101,7 @@ const ImageItem = styled.li`
 const Image = styled.div`
   img {
     height: 100%;
+    width: 100%;
     object-fit: scale-down;
   }
 `;
