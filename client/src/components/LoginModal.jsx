@@ -22,101 +22,43 @@ const ModalContainer = styled.div`
   display: flex;
   width: 100%;
   height: 520px;
-  /* padding: 5%; */
   border-radius: 10px;
-  /* border: solid 1px #707070; */
   background-color: #fff;
   svg {
     cursor: pointer;
   }
 `;
 
-const TitleBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 23.4%;
-  img {
-    margin-top: 5.6vh;
-    margin-bottom: 12.3vh;
-  }
-  span {
-    font-size: 1.3rem;
-    text-align: center;
-
-    @media ${device.tablet} {
-      font-size: 0.8rem;
-    }
-  }
-`;
-
 const FormBox = styled.form`
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
   width: 100%;
-  /* padding-left: ${(props) => (props.paddingLeft ? props.paddingLeft : '0px')};
-  border-left: ${(props) => (props.borderLeft ? props.borderLeft : '0px')};
-  margin-left: ${(props) => (props.marginLeft ? props.marginLeft : '0px')};
-  margin-right: ${(props) => (props.marginRight ? props.marginRight : '0px')};
-  padding-right: ${(props) => (props.paddingRight ? props.paddingRight : '0px')};
-  border-right: ${(props) => (props.borderRight ? props.borderRight : '0px')}; */
 
-  /* svg {
-    font-size: 3rem;
-    height:100px;
-  } */
+  p {
+    white-space: pre-wrap;
+    color: var(--red--error);
+  }
+
+  img {
+    width: 80%;
+    margin: 0 auto;
+  }
 `;
 
 const InputBox = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-bottom: ${(props) => (props.marginBottom ? props.marginBottom : '0px')};
-  * {
+
+  label {
+    font-size: 1.25rem;
+    font-weight: 500;
     margin-bottom: 10px;
   }
-  label {
-    font-family: Righteous;
-    font-size: 1.5rem;
-  }
   input {
-    font-family: GowunDodum-Regular;
-    font-size: 1.66rem;
+    font-size: 1.125rem;
     border-bottom: 1px solid var(--warm-grey);
-    ::placeholder {
-      font-family: GowunDodum-Regular;
-    }
-  }
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-`;
-
-const ButtonGroup = styled.div`
-  display: flex;
-  gap: 2rem;
-
-  @media ${device.tablet} {
-    gap: 1rem;
-  }
-`;
-
-const SignupGroup = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  align-items: flex-end;
-  font-family: GongGothicMedium;
-  span {
-    font-size: 1.5rem;
-    font-weight: 500;
-    cursor: pointer;
-
-    @media ${device.tablet} {
-      font-size: 1rem;
-    }
   }
 `;
 
@@ -124,11 +66,9 @@ const FlexEndGroup = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  font-family: GongGothicMedium;
-  font-size: 1.75rem; // 삭제 아이콘 크기
+  font-size: 1.5rem; // 삭제 아이콘 크기
   span {
-    font-size: 1.5rem;
-    font-weight: 500;
+    font-size: 1rem;
     cursor: pointer;
 
     @media ${device.tablet} {
@@ -139,23 +79,32 @@ const FlexEndGroup = styled.div`
 
 const IconBorder = styled.div`
   border-radius: 10px;
-  border: solid 2px #000;
-  font-size: 3rem;
-  width: fit-content;
-  height: 3rem;
+  border: solid 2px ${(props) => (props.border ? props.border : '')};
+  font-size: 2rem;
+  font-weight: 500;
+  width: 100%;
+  padding: 0.25rem 0;
+  height: fit-content;
+  background-color: ${(props) => (props.bg ? props.bg : '')};
+  cursor: pointer;
 
-  @media ${device.tablet} {
-    width: fit-content;
-    height: fit-content;
-    font-size: 2rem;
+  &:hover {
+    opacity: 0.75;
   }
-`;
 
-const BetweenDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: space-between;
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  svg {
+    margin-right: 10px;
+  }
+
+  span {
+    font-size: 1rem;
+  }
 `;
 
 const StyledButton = styled.button`
@@ -167,19 +116,18 @@ const StyledButton = styled.button`
   border: none;
   background: none;
   cursor: pointer;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   border-radius: 10px;
+  border: 2px solid black;
 
   /* 색상 & 폰트 */
-  background-color: #000;
-  font-size: 1.5rem;
-  color: #fbb74a;
+  background-color: var(--butterscotch);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--black);
 
   &:hover {
     opacity: 0.75;
-  }
-  @media ${device.tablet} {
-    font-size: 1rem;
   }
 `;
 
@@ -200,10 +148,9 @@ const ModalBackdrop = styled.div`
 
 const ModalView = styled.div`
   background-color: white;
-  /* width: fit-content; */
   width: 320px;
   height: 520px;
-  padding: 5%;
+  padding: 20px;
   border-radius: 10px;
 `;
 
@@ -222,10 +169,6 @@ const StyledWrapper = styled.div`
   z-index: 1010;
   position: absolute;
 `;
-
-// 사라지는 애니메이션
-// react-transition-group의 <Transition> 실패 https://velog.io/@sae1013/REACT-%EB%AA%A8%EB%8B%AC-%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98CSS
-// setTimeout 실패 https://agal.tistory.com/170
 
 const LoginModal = ({
   isLoginModalOn,
@@ -253,7 +196,7 @@ const LoginModal = ({
 
   const handleLogin = () => {
     if (!loginInfo.email || !loginInfo.password) {
-      setErrorMessage('아이디와 비밀번호를 입력하세요');
+      setErrorMessage('아이디와 비밀번호를 입력해주세요!');
     } else {
       postLogin(loginInfo)
         .then((res) => {
@@ -316,7 +259,7 @@ const LoginModal = ({
         setIsDupli(true);
         setValiErrMessage({
           ...valiErrMessage,
-          ErrDupliEmail: '중복된 이메일이에요. 다시 입력해주세요',
+          ErrDupliEmail: '중복된 이메일이에요. 다시 입력해주세요!',
         });
       });
   };
@@ -368,7 +311,7 @@ const LoginModal = ({
       if (e.target.value.length < 3 || e.target.value.length > 10) {
         setValiErrMessage({
           ...valiErrMessage,
-          ErrUsername: '이름을 3글자 이상 10글자 이하로 입력해주세요.',
+          ErrUsername: '3글자 이상 10글자 이하로 입력해주세요!',
         });
         setValiInfo({ ...valiInfo, isUsername: false });
       } else {
@@ -391,9 +334,7 @@ const LoginModal = ({
       if (!passwordRegex.test(passwordCurrent)) {
         setValiErrMessage({
           ...valiErrMessage,
-          ErrPassword: `숫자+영문자+특수문자 조합으로
-          8자리 이상 입력해주세요!
-          사용 가능한 특수문자는 !@#$%^*+=- 입니다.`,
+          ErrPassword: `비밀번호를 입력해주세요!\n숫자+영문자+특수문자로 8자리 이상 입력하세요\n사용 가능한 특수문자: !@#$%^*+=-`,
         });
         setValiInfo({ ...valiInfo, isPassword: false });
       } else {
@@ -421,7 +362,7 @@ const LoginModal = ({
       } else {
         setValiErrMessage({
           ...valiErrMessage,
-          ErrPasswordConfirm: '비밀번호가 달라요. 다시 확인해주세요!',
+          ErrPasswordConfirm: '비밀번호가 달라요.\n다시 확인해주세요!',
         });
         setValiInfo({ ...valiInfo, isPasswordConfirm: false });
       }
@@ -492,64 +433,58 @@ const LoginModal = ({
             <ModalView onClick={(e) => e.stopPropagation()}>
               {toggle ? (
                 <ModalContainer onSubmit={(e) => e.preventDefault()}>
-                  <FormBox
-                  // marginLeft={'5.3%'}
-                  // paddingLeft={'5.3%'}
-                  // borderLeft={'2px solid black;'}
-                  >
+                  <FormBox>
                     <FlexEndGroup>
                       <FaTimesCircle onClick={onModalOffAction} />
                     </FlexEndGroup>
-                    {/* <LogoFull /> */}
                     <img src={LandingLOGO} />
-                    <InputBox marginBottom={'10.7%'}>
-                      <label>Email</label>
+                    <InputBox>
+                      <label>이메일</label>
                       <input
                         onChange={handleInputValue(Object.keys(loginInfo)[0])}
                         placeholder="kimcoding@gmail.com"
                       ></input>
                     </InputBox>
-                    <InputBox marginBottom={'10.7%'}>
-                      <label>Password</label>
+                    <InputBox>
+                      <label>비밀번호</label>
                       <input
                         onChange={handleInputValue(Object.keys(loginInfo)[1])}
                         type={'password'}
                         placeholder="**********"
                       ></input>
                     </InputBox>
-                    <BetweenDiv>
-                      <ButtonContainer>
-                        <ButtonGroup>
-                          <IconBorder>
-                            <FcGoogle onClick={handleSignGoogle} />
-                          </IconBorder>
-                          <IconBorder>
-                            <RiKakaoTalkFill onClick={handleSignKakao} />
-                          </IconBorder>
-                        </ButtonGroup>
-                        <StyledButton onClick={handleLogin}>LOGIN</StyledButton>
-                      </ButtonContainer>
-                      {errorMessage ? <div>{errorMessage}</div> : ''}
-                      {afterSignUp ? (
-                        <div style={{ color: 'red' }}>{afterSignUp}</div>
-                      ) : (
-                        ''
-                      )}
-                      <FlexEndGroup onClick={handleToggle}>
-                        <span>아직 계정이 없으신가요?</span>
-                      </FlexEndGroup>
-                    </BetweenDiv>
+                    {errorMessage ? <p>{errorMessage}</p> : ''}
+                    {afterSignUp ? (
+                      <span style={{ color: 'black' }}>{afterSignUp}</span>
+                    ) : (
+                      ''
+                    )}
+                    <StyledButton onClick={handleLogin}>로그인</StyledButton>
+                    <IconBorder onClick={handleSignGoogle} border={'#4384f3'}>
+                      <div>
+                        <FcGoogle />
+                        <span>구글 로그인</span>
+                      </div>
+                    </IconBorder>
+                    <IconBorder onClick={handleSignKakao} bg={'#f7e600'} border={'black'}>
+                      <div>
+                        <RiKakaoTalkFill />
+                        <span>카카오 로그인</span>
+                      </div>
+                    </IconBorder>
+                    <FlexEndGroup onClick={handleToggle}>
+                      <span>아직 계정이 없으신가요?</span>
+                    </FlexEndGroup>
                   </FormBox>
                 </ModalContainer>
               ) : (
                 <ModalContainer onSubmit={(e) => e.preventDefault()}>
-                  <FormBox
-                  // marginRight={'5.3%'}
-                  // paddingRight={'5.3%'}
-                  // borderRight={'2px solid black;'}
-                  >
-                    <InputBox marginBottom={'5.7%'}>
-                      <label>Email</label>
+                  <FormBox>
+                    <FlexEndGroup>
+                      <FaTimesCircle onClick={onModalOffAction} />
+                    </FlexEndGroup>
+                    <InputBox>
+                      <label>이메일</label>
                       <input
                         onBlur={handleCheckDupliEmail}
                         onChange={onChangeEmail}
@@ -558,24 +493,30 @@ const LoginModal = ({
                     </InputBox>
                     {valiErrMessage.ErrEmail ? (
                       isDupli ? (
-                        <div style={{ color: 'red' }}>{valiErrMessage.ErrDupliEmail}</div>
+                        <p>{valiErrMessage.ErrDupliEmail}</p>
+                      ) : valiInfo.isEmail ? (
+                        <p style={{ color: 'black' }}>{valiErrMessage.ErrEmail}</p>
                       ) : (
-                        <div>{valiErrMessage.ErrEmail}</div>
+                        <p>{valiErrMessage.ErrEmail}</p>
                       )
                     ) : (
                       ''
                     )}
-                    <InputBox marginBottom={'5.7%'}>
-                      <label>Username</label>
+                    <InputBox>
+                      <label>닉네임</label>
                       <input onChange={onChangeUsername} placeholder="김코딩"></input>
                     </InputBox>
                     {valiErrMessage.ErrUsername ? (
-                      <div>{valiErrMessage.ErrUsername}</div>
+                      valiInfo.isUsername ? (
+                        <p style={{ color: 'black' }}>{valiErrMessage.ErrUsername}</p>
+                      ) : (
+                        <p>{valiErrMessage.ErrUsername}</p>
+                      )
                     ) : (
                       ''
                     )}
-                    <InputBox marginBottom={'5.7%'}>
-                      <label>Password</label>
+                    <InputBox>
+                      <label>비밀번호</label>
                       <input
                         onChange={onChangePassword}
                         type={'password'}
@@ -583,40 +524,48 @@ const LoginModal = ({
                       ></input>
                     </InputBox>
                     {valiErrMessage.ErrPassword ? (
-                      <div>{valiErrMessage.ErrPassword}</div>
+                      valiInfo.isPassword ? (
+                        <p style={{ color: 'black' }}>{valiErrMessage.ErrPassword}</p>
+                      ) : (
+                        <p>{valiErrMessage.ErrPassword}</p>
+                      )
                     ) : (
                       ''
                     )}
-                    <BetweenDiv>
-                      <InputBox marginBottom={'5.7%'}>
-                        <label>Password Check</label>
-                        <input
-                          onChange={onChangePasswordConfirm}
-                          type={'password'}
-                          placeholder="**********"
-                        ></input>
-                      </InputBox>
-                      {valiErrMessage.ErrPasswordConfirm ? (
-                        <div>{valiErrMessage.ErrPasswordConfirm}</div>
+                    <InputBox>
+                      <label>비밀번호 확인</label>
+                      <input
+                        onChange={onChangePasswordConfirm}
+                        type={'password'}
+                        placeholder="**********"
+                      ></input>
+                    </InputBox>
+                    {valiErrMessage.ErrPasswordConfirm ? (
+                      valiInfo.isPasswordConfirm ? (
+                        <p style={{ color: 'black' }}>
+                          {valiErrMessage.ErrPasswordConfirm}
+                        </p>
                       ) : (
-                        ''
-                      )}
-                      {errorMessage ? <div>{errorMessage}</div> : ''}
-                      <SignupGroup>
-                        <span onClick={handleToggle}>로그인 화면으로 돌아가기</span>
-                        <StyledButton
-                          onClick={() =>
-                            !(isEmail && isUsername && isPassword && isPasswordConfirm)
-                              ? setErrorMessage(
-                                  '채우지 않았거나 유효하지 않은 입력이 있어요.'
-                                )
-                              : handleSignup()
-                          }
-                        >
-                          SIGNUP
-                        </StyledButton>
-                      </SignupGroup>
-                    </BetweenDiv>
+                        <p>{valiErrMessage.ErrPasswordConfirm}</p>
+                      )
+                    ) : (
+                      ''
+                    )}
+                    {errorMessage ? <p>{errorMessage}</p> : ''}
+                    <StyledButton
+                      onClick={() =>
+                        !(isEmail && isUsername && isPassword && isPasswordConfirm)
+                          ? setErrorMessage(
+                              '채우지 않았거나 유효하지 않은 입력이 있어요.'
+                            )
+                          : handleSignup()
+                      }
+                    >
+                      회원가입
+                    </StyledButton>
+                    <FlexEndGroup>
+                      <span onClick={handleToggle}>로그인 화면으로 돌아가기</span>
+                    </FlexEndGroup>
                   </FormBox>
                 </ModalContainer>
               )}

@@ -68,14 +68,14 @@ const SettingContainer = styled.div`
 
 const Title = styled.div`
   align-self: flex-end;
-  font-family: sans-serif;
+  font-family: Noto Sans KR;
   font-style: bold;
   cursor: default;
 `;
 
 const SubTitle = styled.div`
   align-self: flex-end;
-  font-family: sans-serif;
+  font-family: Noto Sans KR;
   cursor: default;
 `;
 
@@ -84,7 +84,7 @@ const LeftSide = styled.div`
   display: flex;
   flex: none;
   justify-content: flex-start;
-  font-family: sans-serif;
+  font-family: Noto Sans KR;
   font-size: 1.5rem;
   margin-left: 5px;
   cursor: default;
@@ -122,7 +122,7 @@ const ChangePwContainer = styled.div`
     font-size: 1rem;
   }
   p {
-    font-family: sans-serif;
+    font-family: Noto Sans KR;
     font-size: 1rem;
   }
 `;
@@ -137,16 +137,17 @@ const PersonalInfo = styled.div`
     /* margin-top: 10%; */
     margin-top: 0.5rem;
     font-size: 0.8rem;
-    font-family: sans-serif;
+    font-family: Noto Sans KR;
     @media all and (max-width: 767px) {
-      font-size: 0.7rem;
+      font-size: 0.6rem;
     }
   }
   > span {
     margin-top: 0.5rem;
     font-size: 1rem;
-    font-family: sans-serif;
+    font-family: Noto Sans KR;
     cursor: default;
+
     @media all and (max-width: 767px) {
       margin-top: 0.3rem;
     }
@@ -157,20 +158,33 @@ const Nickname = styled.div`
   display: flex;
 
   > span {
-    font-family: sans-serif;
+    font-family: Noto Sans KR;
     font-size: 1.2rem;
     cursor: default;
+
+    @media all and (max-width: 767px) {
+      font-size: 1rem;
+    }
   }
   > svg {
+    margin-top: 0.2rem;
     margin-left: 5px;
     font-size: 1rem;
     cursor: pointer;
     :hover {
       color: var(--orangey-yellow);
     }
+
+    @media all and (max-width: 767px) {
+      margin-top: 0.1rem;
+    }
   }
   > input {
-    width: 138px;
+    width: 170px;
+
+    @media all and (max-width: 767px) {
+      width: 141px;
+    }
   }
 
   /* 말풍선 적절한 top 과 margin-left 로 위치조정 */
@@ -265,17 +279,21 @@ const ImageContainer = styled.div`
 `;
 
 const StyledInput = styled.input`
-  font-family: sans-serif;
+  font-family: Noto Sans KR;
   font-size: 1rem;
   border-bottom: 1px solid var(--light--gray);
   ::placeholder {
-    font-family: sans-serif;
+    font-family: Noto Sans KR;
+  }
+
+  @media all and (max-width: 767px) {
+    font-size: 0.8rem;
   }
 `;
 
 const PasswordContainer = styled.div`
   display: grid;
-  font-family: sans-serif;
+  font-family: Noto Sans KR;
   grid-template-rows: 3fr;
   grid-template-columns: 20px 1fr;
   grid-gap: 18px 15px;
@@ -291,11 +309,12 @@ const PasswordContainer = styled.div`
   }
   @media all and (max-width: 767px) {
     margin-left: -15px;
+    grid-gap: 14px 15px;
   }
 
   input:first-child {
     grid-area: one;
-    width: 232px;
+    width: 260px;
     -webkit-text-security: disc;
 
     @media all and (max-width: 767px) {
@@ -305,7 +324,7 @@ const PasswordContainer = styled.div`
 
   input:nth-child(2) {
     grid-area: two;
-    width: 232px;
+    width: 260px;
     -webkit-text-security: disc;
 
     @media all and (max-width: 767px) {
@@ -315,7 +334,7 @@ const PasswordContainer = styled.div`
 
   input:nth-child(3) {
     grid-area: three;
-    width: 232px;
+    width: 260px;
     -webkit-text-security: disc;
 
     @media all and (max-width: 767px) {
@@ -324,14 +343,15 @@ const PasswordContainer = styled.div`
   }
 
   p:nth-child(4) {
+    margin-top: -10px;
     font-size: 0.8rem;
     line-height: 0.9rem;
-    font-family: sans-serif;
+    font-family: Noto Sans KR;
     grid-area: four;
     white-space: pre-wrap;
 
     @media all and (max-width: 767px) {
-      font-size: 0.7rem;
+      font-size: 0.6rem;
     }
   }
 
@@ -343,7 +363,7 @@ const PasswordContainer = styled.div`
 
 const AccountManagementContainer = styled.div`
   display: grid;
-  font-family: sans-serif;
+  font-family: Noto Sans KR;
   grid-template-rows: 3fr;
   grid-template-columns: 20px 1fr;
   grid-gap: 18px 15px;
@@ -372,19 +392,20 @@ const StyledButton = styled.button`
   border: none;
   background: none;
   cursor: pointer;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   border-radius: 10px;
+  box-shadow: 0 0 0 2px inset black;
   margin-left: -5px;
   width: fit-content;
   height: fit-content;
 
   /* 색상 & 폰트 */
-  color: var(--butterscotch);
-  background-color: #000;
+  background-color: var(--butterscotch);
   cursor: pointer;
-  font-family: sans-serif;
+  font-family: Noto Sans KR;
   font-size: 1rem;
-  color: #fbb74a;
+  font-weight: 500;
+  color: var(--black);
 
   &:hover {
     opacity: 0.75;
@@ -400,7 +421,7 @@ const Setting = () => {
   }));
   const { username, email, profileImage, type } = userInfo;
 
-  console.log(type);
+  // console.log(type);
 
   // * 회원 탈퇴
   const navigate = useNavigate();
@@ -483,7 +504,7 @@ const Setting = () => {
         if (errCode === 409) {
           setAfterValiNameMsg('변경 전과 같은 닉네임입니다.');
         } else {
-          setAfterValiNameMsg(' 변경을 실패했습니다!');
+          setAfterValiNameMsg('변경을 실패했습니다!');
         }
         console.log('changeUsername 에러캐치', err);
       });
@@ -531,7 +552,7 @@ const Setting = () => {
     (e) => {
       setChangeInfo({ ...changeInfo, newUsername: e.target.value });
       if (e.target.value.length < 3 || e.target.value.length > 10) {
-        setValiNameMsg('3글자 이상 10글자 이하로 입력하세요');
+        setValiNameMsg('3글자 이상 10글자 이하로 입력해주세요!');
         setValiInfo({ ...valiInfo, isNewUsername: false });
       } else {
         setValiNameMsg('올바른 이름 형식입니다 :)');
@@ -566,7 +587,7 @@ const Setting = () => {
       const passwordCurrent = e.target.value;
       if (!passwordRegex.test(passwordCurrent)) {
         setValiPwMsg(
-          `새 비밀번호를 입력해주세요!\n8자리 이상의 숫자+영문자+특수문자를 입력하세요\n사용 가능한 특수문자: !@#$%^*+=-`
+          `새 비밀번호를 입력해주세요!\n숫자+영문자+특수문자로 8자리 이상 입력하세요\n사용 가능한 특수문자: !@#$%^*+=-`
         );
         setValiInfo({ ...valiInfo, isNewPassword: false });
       } else {
@@ -700,11 +721,7 @@ const Setting = () => {
           <EditContainer>
             <LeftSide>계정관리</LeftSide>
             <AccountManagementContainer>
-              {type === 'google' || type === 'kakao' ? (
-                <StyledButton onClick={handleSignOut}>회원 탈퇴</StyledButton>
-              ) : (
-                <StyledButton onClick={handleSignOut}>회원 탈퇴</StyledButton>
-              )}
+              <StyledButton onClick={handleSignOut}>회원 탈퇴</StyledButton>
             </AccountManagementContainer>
           </EditContainer>
         </div>

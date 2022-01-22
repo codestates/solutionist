@@ -1,53 +1,81 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
-import SetCard from '../components/SetCard';
+// import SetCard from '../components/SetCard';
+// import Footer from '../components/Footer';
 import SetCardVerTwo from '../components/SetCardVerTwo';
 import MoveTopButton from '../components/MoveTopButton';
-import Footer from '../components/Footer';
 
 import { getMySetsMade, getMySetsSolved } from '../api/SearchSetAPI';
 
+const Container = styled.div`
+  max-width: 1216px;
+  margin: 0 auto;
+`;
+
 const SetsContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 56.6% 1fr;
-  grid-template-rows: auto auto;
-  grid-template-areas:
-    '. header .'
-    '. cards .';
-  margin: 1.5rem 0;
-  grid-row-gap: 1.5rem;
-  grid-column-gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 75%;
+  margin: 0 auto 0.5rem auto;
+  font-size: 1rem;
+  color: var(--warm-grey);
+  user-select: none;
+  p {
+    :last-child {
+      cursor: pointer;
+    }
+  }
+
+  @media all and (max-width: 767px) {
+    width: calc(100% - 1rem);
+    margin: 0 0.5rem 0.5rem 0.5rem;
+  }
 `;
 
 const Header = styled.div`
-  grid-area: header;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-family: 'GongGothicMedium', sans-serif;
+  margin: 1rem 0;
+  @media all and (max-width: 767px) {
+    margin-left: 0.5rem;
+  }
 `;
 
 const CardsContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 1rem;
-  grid-area: cards;
-
-  div:nth-child(n + 5) {
-    display: ${(props) => (props.$display ? 'none' : '')};
-  }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-height: ${(props) =>
+    props.isMadeHidden || props.isSolvedHidden ? '416px' : 'initial'};
+  overflow: ${(props) =>
+    props.isMadeHidden || props.isSolvedHidden ? 'hidden' : 'initial'};
 `;
 
 const ShowBox = styled.section`
   display: flex;
   justify-content: flex-end;
-  width: 56.6%;
-  margin: 0 21.7% 1.2rem 21.7%;
+  width: 75%;
+  margin: 0 12.5%;
+
+  @media all and (max-width: 767px) {
+    width: calc(100% - 2rem);
+    margin: 0 auto;
+  }
 `;
 
 const Divider = styled.div`
-  width: 56.6%;
+  width: 75%;
   height: 2px;
-  margin: 0 21.7%;
+  margin: 1rem 12.5% 0 12.5%;
   background-color: var(--orangey-yellow);
+
+  @media all and (max-width: 767px) {
+    width: calc(100% - 2rem);
+    margin: 1rem auto 0 auto;
+  }
 `;
 
 const MySet = () => {
@@ -60,6 +88,9 @@ const MySet = () => {
   const handleSolvedHidden = () => {
     setIsSolvedHidden(!isSolvedHidden);
   };
+
+  const [showMade, setShowMade] = useState(false);
+  const [showSolve, setshowSolve] = useState(false);
 
   // * 내가 만든 세트 API 통신
   const [mySetsMade, setMySetsMade] = useState([]);
@@ -83,18 +114,27 @@ const MySet = () => {
       const data = await getMySetsSolved();
       console.log('solved', data.data.findSet);
       setMySetsSolved(data.data.findSet);
-      // Todo : map할때 props에 isMade 보내서 만든/푼 구분
     };
     sendAPICall();
   }, []);
 
+  const cardRefMade = useRef(null);
+  const cardRefSolve = useRef(null);
+
+  useEffect(() => {
+    if (cardRefMade.current?.scrollHeight > 416) setShowMade(true);
+    else setShowMade(false);
+    if (cardRefSolve.current?.scrollHeight > 416) setshowSolve(true);
+    else setshowSolve(false);
+  });
+
   return (
-    <>
+    <Container>
+      {/* 상단 이동 버튼 테스트 */}
+      <MoveTopButton />
       <SetsContainer>
-        {/* 상단 이동 버튼 테스트 */}
-        <MoveTopButton />
         <Header>내가 만든 세트</Header>
-        <CardsContainer $display={isMadeHidden}>
+        <CardsContainer ref={cardRefMade} isMadeHidden={isMadeHidden}>
           {mySetsMade.map((made) => (
             <SetCardVerTwo
               isMade={true}
@@ -113,12 +153,12 @@ const MySet = () => {
         </CardsContainer>
       </SetsContainer>
       <ShowBox onClick={handleMadeHidden}>
-        {isMadeHidden ? <p>Show More</p> : <p>Show less</p>}
+        {showMade ? isMadeHidden ? <p>Show More</p> : <p>Show less</p> : ''}
       </ShowBox>
       <Divider />
       <SetsContainer>
         <Header>내가 푼 세트</Header>
-        <CardsContainer $display={isSolvedHidden}>
+        <CardsContainer ref={cardRefSolve} isSolvedHidden={isSolvedHidden}>
           {mySetsSolved.map((solve) => (
             <SetCardVerTwo
               isMade={false}
@@ -137,10 +177,9 @@ const MySet = () => {
         </CardsContainer>
       </SetsContainer>
       <ShowBox onClick={handleSolvedHidden}>
-        {isSolvedHidden ? <p>Show More</p> : <p>Show less</p>}
+        {showSolve ? isSolvedHidden ? <p>Show More</p> : <p>Show less</p> : ''}
       </ShowBox>
-      <Footer />
-    </>
+    </Container>
   );
 };
 
