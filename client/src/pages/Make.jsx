@@ -103,16 +103,50 @@ const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 50%;
-  margin: 1rem 25% 0 25%;
+  margin: 1rem 25%;
   color: var(--warm-grey);
   font-size: 4rem;
-  opacity: 0.5;
   svg {
+    opacity: 0.5;
     cursor: pointer;
     :hover {
       color: black;
     }
   }
+
+  > div {
+    position: relative;
+    div {
+      display: none;
+      > p {
+        position: absolute;
+        width: 100px;
+        padding: 10px;
+        left: -1.75rem;
+        border-radius: 0.5rem;
+        background: var(--black);
+        color: var(--butterscotch);
+        font-weight: bold;
+        font-size: 1rem;
+        text-align: center;
+      }
+      ::after {
+        position: absolute;
+        left: 1.5rem;
+        top: 3.75rem;
+        width: 0px;
+        height: 0px;
+        border-bottom: calc(0.5rem * 1.732) solid black;
+        border-left: 0.5rem solid transparent;
+        border-right: 0.5rem solid transparent;
+        content: '';
+      }
+    }
+  }
+  svg:hover + div {
+    display: block;
+  }
+
   @media all and (max-width: 1023px) {
     width: 60%;
     margin: 1rem 15% 0 25%;
@@ -354,11 +388,21 @@ const Make = () => {
         </React.Fragment>
       ))}
       <ButtonContainer>
-        <FaPlusSquare onClick={addProblem} />
+        <div>
+          <FaPlusSquare onClick={addProblem} />
+          <div>
+            <p>문제 추가</p>
+          </div>
+        </div>
         <Message color={message[1]}>
           <p>{message[0]}</p>
         </Message>
-        <FaSave onClick={handleSave} />
+        <div>
+          <FaSave onClick={handleSave} />
+          <div>
+            <p>세트 저장</p>
+          </div>
+        </div>
       </ButtonContainer>
     </MakeContainer>
   );
