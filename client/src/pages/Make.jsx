@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import MakeProblem from '../components/MakeProblem';
 import { FaPlusSquare, FaSave, FaArrowLeft } from 'react-icons/fa';
 
+import Tutorial from '../components/Tutorial';
+
 const MakeContainer = styled.div`
   height: calc(100% - 4rem - 70px);
   max-width: 1216px;
@@ -290,6 +292,14 @@ const Make = () => {
 
   const [message, setMessage] = useState(['+ 버튼을 눌러 문제를 추가해보세요.', '']);
 
+  // 튜토리얼 이미지 Make 수정 예정
+  const imagesArr = [
+    '../../assets/images/tutorial1.png',
+    '../../assets/images/tutorial2.png',
+    '../../assets/images/tutorial3.png',
+    '../../assets/images/tutorial4.png',
+  ];
+
   return (
     <MakeContainer onScroll={handleScroll} ref={makeRef}>
       <Header>
@@ -310,6 +320,8 @@ const Make = () => {
         onInput={autoGrow}
       />
       <Divider />
+      {/* 튜토리얼 작업 */}
+      <Tutorial imagesArr={imagesArr} />
       <SidebarContainer>
         <SideRelative>
           <Sidebar>

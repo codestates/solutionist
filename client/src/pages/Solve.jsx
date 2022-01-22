@@ -35,7 +35,7 @@ const Header = styled.div`
   }
   @media all and (max-width: 1023px) {
     width: 60%;
-    margin: 0 15% 0.5rem 25%;
+    margin: 0 auto 0.5rem auto;
   }
   @media all and (max-width: 767px) {
     width: calc(100% - 2rem);
@@ -56,7 +56,7 @@ const Title = styled.div`
 
   @media all and (max-width: 1023px) {
     width: 60%;
-    margin: 0 15% 0 25%;
+    margin: 0 auto;
   }
   @media all and (max-width: 767px) {
     width: calc(100% - 2rem);
@@ -77,7 +77,7 @@ const Desc = styled.div`
 
   @media all and (max-width: 1023px) {
     width: 60%;
-    margin: 0.5rem 15% 1rem 25%;
+    margin: 0.5rem auto 1rem auto;
   }
   @media all and (max-width: 767px) {
     width: calc(100% - 2rem);
@@ -105,7 +105,7 @@ const Info = styled.div`
   }
   @media all and (max-width: 1023px) {
     width: 60%;
-    margin: 0.5rem 15% 1rem 25%;
+    margin: 0.5rem auto 1rem auto;
   }
   @media all and (max-width: 767px) {
     width: calc(100% - 2rem);
@@ -120,7 +120,7 @@ const Divider = styled.div`
 
   @media all and (max-width: 1023px) {
     width: 60%;
-    margin: 0 15% 0 25%;
+    margin: 0 auto;
   }
   @media all and (max-width: 767px) {
     width: calc(100% - 2rem);
@@ -139,7 +139,7 @@ const ProblemContainer = styled.div`
     'statIcon explanation .';
 
   @media all and (max-width: 1023px) {
-    grid-template-columns: 25% 60% 15%;
+    grid-template-columns: 20% 60% 20%;
   }
   @media all and (max-width: 767px) {
     margin: 0 1rem;
@@ -355,7 +355,7 @@ const ButtonContainer = styled.div`
 
   @media all and (max-width: 1023px) {
     width: 60%;
-    margin: 0 15% 0 25%;
+    margin: 0 auto;
   }
   @media all and (max-width: 767px) {
     width: calc(100% - 2rem);
@@ -546,6 +546,14 @@ const Solve = () => {
   };
   console.log(set);
 
+  // 튜토리얼 이미지
+  const imagesArr = [
+    '../../assets/images/tutorial1.png',
+    '../../assets/images/tutorial2.png',
+    '../../assets/images/tutorial3.png',
+    '../../assets/images/tutorial4.png',
+  ];
+
   return (
     <SolveContainer>
       <Header>
@@ -571,7 +579,7 @@ const Solve = () => {
             </div>
           </ButtonContainer>
           {/* 튜토리얼 작업 */}
-          {/* <Tutorial /> */}
+          <Tutorial imagesArr={imagesArr} />
         </>
       ) : (
         <>
