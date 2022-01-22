@@ -45,8 +45,8 @@ SOLUTIONIST는 객관식, OX 문제 그리고 정답이 없는 설문조사를 �
   <div dir ="auto">
     <br>
     <a>
-      <img src="https://user-images.githubusercontent.com/46926683/150644928-773105a1-ea4f-4cf7-97f3-ab8388469887.png" width="400" style="max-width: 100%;">
-      <img src="https://user-images.githubusercontent.com/46926683/150645086-df0954ce-e56a-43f0-8b43-ca9bcc513ba5.png" width="400" style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150644928-773105a1-ea4f-4cf7-97f3-ab8388469887.png" width="400" height='550' style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150645086-df0954ce-e56a-43f0-8b43-ca9bcc513ba5.png" width="400" height='550' style="max-width: 100%;">
     </a>
   </div>
 </details>
@@ -57,7 +57,7 @@ SOLUTIONIST는 객관식, OX 문제 그리고 정답이 없는 설문조사를 �
   <div dir ="auto">
     <br>
     <a>
-      <img src="https://user-images.githubusercontent.com/46926683/150648223-c458919c-0cc6-4cd1-9ece-ff7e78356e71.png" width="400" style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150648223-c458919c-0cc6-4cd1-9ece-ff7e78356e71.png" width="400" height='400' style="max-width: 100%;">
     </a>
   </div>
 </details>
@@ -68,7 +68,18 @@ SOLUTIONIST는 객관식, OX 문제 그리고 정답이 없는 설문조사를 �
   <div dir ="auto">
     <br>
     <a>
-      <img src="https://user-images.githubusercontent.com/46926683/150648312-d015c7d0-0341-41c8-ba01-7c0f5d0b37b6.png" width="400" style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150648312-d015c7d0-0341-41c8-ba01-7c0f5d0b37b6.png" width="400" height='400' style="max-width: 100%;">
+    </a>
+  </div>
+</details>
+<details>
+  <summary>
+	  SOLVE
+  </summary>
+  <div dir ="auto">
+    <br>
+    <a>
+      <img src="https://user-images.githubusercontent.com/46926683/150648679-bb9ebaba-98b5-4278-a2d9-91dc0d927697.png" width="400" height='400' style="max-width: 100%;">
     </a>
   </div>
 </details>
@@ -122,12 +133,20 @@ SOLUTIONIST는 객관식, OX 문제 그리고 정답이 없는 설문조사를 �
 |김동언|Back-End|[inde153](https://github.com/inde153)|
 
 [Worklog로 이동하기](https://github.com/codestates/solutionist/wiki/%E2%9C%8F%EF%B8%8F-Worklog)
+<br>
+<br>
 
-## solutionist 체험해보기
-토글을 클릭해주세요!
+### solutionist 체험해보기
+
+***
+
 <details>
 <summary>solutionist로 이동하기</summary>
 <div markdown="1">
+	
+<details>
+<summary>solutionist로 이동하기</summary>
+<div markdown="2">
   
   <p>업데이트 예정</p>
 </div>
