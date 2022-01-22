@@ -52,6 +52,28 @@ SOLUTIONIST는 객관식, OX 문제 그리고 정답이 없는 설문조사를 �
 </details>
 <details>
   <summary>
+	  프로필 설정
+  </summary>
+  <div dir ="auto">
+    <br>
+    <a>
+      <img src="https://user-images.githubusercontent.com/46926683/150648223-c458919c-0cc6-4cd1-9ece-ff7e78356e71.png" width="400" style="max-width: 100%;">
+    </a>
+  </div>
+</details>
+<details>
+  <summary>
+	  내 아카이브
+  </summary>
+  <div dir ="auto">
+    <br>
+    <a>
+      <img src="https://user-images.githubusercontent.com/46926683/150648312-d015c7d0-0341-41c8-ba01-7c0f5d0b37b6.png" width="400" style="max-width: 100%;">
+    </a>
+  </div>
+</details>
+<details>
+  <summary>
     아카이브 만들기
   </summary>
   <div dir ="auto">
@@ -78,6 +100,13 @@ SOLUTIONIST는 객관식, OX 문제 그리고 정답이 없는 설문조사를 �
     </a>
   </div>
 </details>
+<br>
+<br>
+
+### 스택
+
+***
+
 <br>
 <br>
 
