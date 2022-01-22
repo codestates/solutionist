@@ -37,7 +37,7 @@ const login = async (req: Request, res: Response) => {
     }
 
     delete user.password;
-    delete user.salt;
+    // delete user.salt;
     const userInfo = JSON.stringify(user);
     const accessToken = jwtToken.accessToken(userInfo);
     const payload = {
