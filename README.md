@@ -1,14 +1,15 @@
+
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/46926683/150643874-19112234-dbaa-4aff-8d85-f818148ec41f.png" alt="solutionist" width="35%"/>  
+	<img src="https://user-images.githubusercontent.com/46926683/150644469-5c76a59c-dcd9-4358-912d-28e60d06d92b.png" alt="solutionist" width="35%"/>  
 </p>  
   
 <p align="center">
-<a href="https://solutionist.site" target="_blank">✏️🧑🏻‍🎓solutionist</a>는 아카이브를 만들고,풀고,다 함께 수정할 수 있으며,공유할 수 있는 웹서비스입니다.
+<a id = "txt" href="https://solutionist.site" target="_blank">✏️🧑🏻‍🎓solutionist</a>는 아카이브를 만들고,풀고,다 함께 수정할 수 있으며,공유할 수 있는 웹서비스입니다.
   </p>  
 <br>
 <br>
 
-## 서비스 소개
+***
 
 ##### SOLUTIONIST는 객관식, OX 문제 그리고 정답이 없는 설문조사를 만들 수 있습니다.
 ##### 만들어진 아카이브를 풀어보고, 수정할 수 있으며,
@@ -16,16 +17,32 @@
 ##### 아카이브를 다 풀고 나서 결과를 볼 수 있으며,
 ##### 다른 사람들과 내가 만든 아카이브를 공유해보세요.
 
-## 주요 기능
+<br>
+<br>
+
+### 주요 기능
+
+***
 
 <details>
   <summary>
     랜딩 페이지
   </summary>
   <div dir ="auto">
+    <a>
+      <img src="https://user-images.githubusercontent.com/46926683/150641877-5ed91e50-55d4-4690-96e7-bde3a45a72ae.png" width="550" style="max-width: 100%;">
+    </a>
+  </div>
+</details>
+<details>
+  <summary>
+    로그인 및 회원가입
+  </summary>
+  <div dir ="auto">
     <br>
     <a>
-      <img src="https://user-images.githubusercontent.com/46926683/150641877-5ed91e50-55d4-4690-96e7-bde3a45a72ae.png" width="550" style="max-width: 60%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150644928-773105a1-ea4f-4cf7-97f3-ab8388469887.png" width="400" style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150645086-df0954ce-e56a-43f0-8b43-ca9bcc513ba5.png" width="400" style="max-width: 100%;">
     </a>
   </div>
 </details>
@@ -36,10 +53,10 @@
   <div dir ="auto">
     <br>
     <a>
-      <img src="https://user-images.githubusercontent.com/46926683/150643654-8f2bfea6-e074-4fbc-ad19-100445e4ec16.png" width="550" style="max-width: 60%;">
-      <img src="https://user-images.githubusercontent.com/46926683/150643669-a2b60833-ea94-4016-870d-4abdd671b24a.png" width="550" style="max-width: 60%;">
-      <img src="https://user-images.githubusercontent.com/46926683/150643672-5609de97-08af-4143-97a4-163e6412b9ed.png" width="550" style="max-width: 60%;">
-      <img src="https://user-images.githubusercontent.com/46926683/150643678-f6b37c5a-043c-486d-89b4-835dbe1ae919.png" width="550" style="max-width: 60%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150643654-8f2bfea6-e074-4fbc-ad19-100445e4ec16.png" width="400" style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150643669-a2b60833-ea94-4016-870d-4abdd671b24a.png" width="400" style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150643672-5609de97-08af-4143-97a4-163e6412b9ed.png" width="400" style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150643678-f6b37c5a-043c-486d-89b4-835dbe1ae919.png" width="400" style="max-width: 100%;">
     </a>
   </div>
 </details>
@@ -50,14 +67,19 @@
   <div dir ="auto">
     <br>
     <a>
-      <img src="https://user-images.githubusercontent.com/46926683/150643952-7c769ba2-9079-462d-a5d4-31056d9287c3.png" width="550" style="max-width: 60%;">
-      <img src="https://user-images.githubusercontent.com/46926683/150643958-28b85c1c-e5f8-4a02-9648-853c35d4e80d.png" width="550" style="max-width: 60%;">
-      <img src="https://user-images.githubusercontent.com/46926683/150643960-fea13164-7bc1-4df9-845f-a9d4e1cda696.png" width="550" style="max-width: 60%;">
-      <img src="https://user-images.githubusercontent.com/46926683/150643964-e912ab19-7cba-41fd-8c9b-b4bbb3ab9e85.png" width="550" style="max-width: 60%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150643952-7c769ba2-9079-462d-a5d4-31056d9287c3.png" width="400" style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150643958-28b85c1c-e5f8-4a02-9648-853c35d4e80d.png" width="400" style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150643960-fea13164-7bc1-4df9-845f-a9d4e1cda696.png" width="400" style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150643964-e912ab19-7cba-41fd-8c9b-b4bbb3ab9e85.png" width="400" style="max-width: 100%;">
     </a>
   </div>
 </details>
 <br>
+<br>
+
+### 팀원
+
+***
 
 |**이름**|포지션|Github|
 |:---:|:---:|:---:|
