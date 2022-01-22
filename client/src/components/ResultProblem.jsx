@@ -150,7 +150,7 @@ const OxCard = styled.div`
 `;
 const ChartContainer = styled.div`
   grid-area: stats;
-  display: ${(props) => (props.isStat ? 'flex' : 'none')};
+  display: flex;
   flex-direction: column;
   grid-gap: 0.25rem;
   margin-bottom: 1rem;
