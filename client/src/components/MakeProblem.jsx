@@ -104,6 +104,17 @@ const Icon = styled.div`
     font-weight: bold;
     font-size: 1rem;
     text-align: center;
+    ::after {
+      position: absolute;
+      left: 3.25rem;
+      top: 1.9rem;
+      width: 0px;
+      height: 0px;
+      border-top: calc(0.5rem * 1.732) solid black;
+      border-left: 0.5rem solid transparent;
+      border-right: 0.5rem solid transparent;
+      content: '';
+    }
   }
 
   svg:hover + p {
