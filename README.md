@@ -151,6 +151,6 @@ SOLUTIONIST는 객관식, OX 문제 그리고 정답이 없는 설문조사를 �
 ***
 
 
-<a id = "txt" href="https://solutionist.site" target="_blank"><img src="https://user-images.githubusercontent.com/46926683/150649296-d9949599-33fc-4aca-9258-04e733320067.png" width="17" style="max-width: 100%;"> 사이트 이동</a>
-<a id = "txt" href="https://solutionist.site" target="_blank"><img src="https://user-images.githubusercontent.com/46926683/150649296-d9949599-33fc-4aca-9258-04e733320067.png" width="17" style="max-width: 100%;"> 위키 이동</a>
-
+<a id = "txt" href="https://solutionist.site" target="_blank"><img src="https://user-images.githubusercontent.com/46926683/150649296-d9949599-33fc-4aca-9258-04e733320067.png" width="17" style="max-width: 100%;"> 사이트 이동</a><br>
+<!-- <a id = "txt" href="https://github.com/codestates/solutionist/wiki" target="_blank"><img src="https://user-images.githubusercontent.com/46926683/150649931-7e78d79b-7d5c-4fea-a174-521c1650dce1.png" width="17" style="max-width: 100%;"> 위키 이동</a>
+ -->
