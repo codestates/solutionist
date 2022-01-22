@@ -118,12 +118,18 @@ const InfoContent = styled.div`
 `;
 const Start = styled.div`
   display: flex;
-  flex-direction: column;
   font-size: 3rem;
-  opacity: 0.25;
+  align-items: center;
+  opacity: 0.5;
   cursor: pointer;
   :hover {
-    opacity: 0.5;
+    opacity: 1;
+  }
+  p {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    font-family: Noto Sans KR;
+    font-weight: bold;
   }
 `;
 const Divider = styled.div`
@@ -616,6 +622,7 @@ const Solve = () => {
               </p>
             </InfoContent>
             <Start>
+              <p>문제 풀기</p>
               <FaCaretSquareRight onClick={handleStart} />
             </Start>
           </Info>
