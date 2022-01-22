@@ -434,6 +434,11 @@ const MessageContainer = styled.div`
     margin: 0.5rem 1rem;
   }
 `;
+const TutorialContainer = styled.div`
+  width: 100%;
+  overflow: hidden;
+`;
+
 const Solve = () => {
   const [set, setSet] = useState({
     title: '',
@@ -602,7 +607,9 @@ const Solve = () => {
             </div>
           </ButtonContainer>
           {/* 튜토리얼 작업 */}
-          <Tutorial imagesArr={imagesArr} />
+          <TutorialContainer>
+            <Tutorial imagesArr={imagesArr} />
+          </TutorialContainer>
         </>
       ) : (
         <>

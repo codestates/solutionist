@@ -157,7 +157,7 @@ const ButtonContainer = styled.div`
   }
   @media all and (max-width: 767px) {
     width: calc(100% - 2rem);
-    margin: 0 1rem;
+    margin: 0.5rem 1rem 0;
     font-size: 3rem;
   }
 `;
@@ -233,7 +233,7 @@ const Edit = () => {
   });
 
   const { setId } = useParams();
-  const [curPos, setCurPos] = useState(0);
+  const [curPos, setCurPos] = useState(1);
   const makeRef = useRef(null);
   const navRefs = useRef([0]);
 
@@ -297,30 +297,29 @@ const Edit = () => {
     navRefs.current[e.target.id].scrollIntoView({ behavior: 'smooth', block: 'center' });
   };
 
-  const [Qpos, setQpos] = useState([]);
-
-  useEffect(() => {
-    const arr = [0];
-    navRefs.current
-      .map((el) => {
-        if (el) return el.offsetTop;
-      })
-      .reduce((acc, cur) => {
-        if (!isNaN(cur)) {
-          arr.push((cur + acc) / 2);
-          return cur;
-        }
-      });
-    setQpos(arr);
-  }, [data]);
-
-  const handleScroll = (e) => {
-    for (let i = 0; i < Qpos.length; i++) {
-      if (Qpos[i] - 100 < document.scrollingElement.scrollTop) {
-        setCurPos(i);
+  const handleScroll = (pos) => {
+    for (let i = 0; i < pos.length + 1; i++) {
+      if (window.scrollY + window.innerHeight / 2 < pos[i]) {
+        return setCurPos(i - 1);
       }
     }
   };
+
+  const listenerScroll = () => handleScroll(questionPos);
+  const questionPos = [0];
+
+  useEffect(() => {
+    navRefs.current.map((el) => {
+      if (el) {
+        questionPos.push(el.offsetTop);
+      }
+    });
+
+    questionPos.push(document.documentElement.scrollHeight);
+
+    document.addEventListener('scroll', listenerScroll);
+    return () => document.removeEventListener('scroll', listenerScroll);
+  }, [data]);
 
   const [versionOn, setVersionOn] = useState(false);
 
@@ -361,7 +360,7 @@ const Edit = () => {
                 onClick={handleNav}
                 id={idx}
                 key={`#Q${idx + 1}`}
-                weight={curPos === idx ? 'bold' : 'normal'}
+                weight={curPos - 1 === idx ? 'bold' : 'normal'}
               >
                 <div id={idx}>{idx + 1}</div>
                 <div id={idx}>{problem.question}</div>

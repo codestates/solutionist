@@ -21,6 +21,9 @@ const ContainerAbsolute = styled.div`
   right: 0;
   margin-left: auto;
   z-index: 900;
+  @media all and (min-width: 1216px) {
+    width: calc(100vw - 50vw + 608px);
+  }
 `;
 const Container = styled.div`
   display: ${(props) => (props.versionOn ? 'flex' : 'none')};
