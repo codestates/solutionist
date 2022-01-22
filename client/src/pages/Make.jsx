@@ -321,10 +321,10 @@ const Make = () => {
 
   // 튜토리얼 이미지 Make 수정 예정
   const imagesArr = [
-    '/assets/images/tutorial1.png',
-    '/assets/images/tutorial2.png',
-    '/assets/images/tutorial3.png',
-    '/assets/images/tutorial4.png',
+    '/assets/images/make_tutorial_1.jpeg',
+    '/assets/images/make_tutorial_2.jpeg',
+    '/assets/images/make_tutorial_3.jpeg',
+    '/assets/images/make_tutorial_4.jpeg',
   ];
 
   return (

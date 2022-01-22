@@ -590,10 +590,10 @@ const Solve = () => {
 
   // 튜토리얼 이미지
   const imagesArr = [
-    '../../assets/images/tutorial1.png',
-    '../../assets/images/tutorial2.png',
-    '../../assets/images/tutorial3.png',
-    '../../assets/images/tutorial4.png',
+    '/assets/images/solve_tutorial_1.jpeg',
+    '/assets/images/solve_tutorial_2.jpeg',
+    '/assets/images/solve_tutorial_3.jpeg',
+    '/assets/images/solve_tutorial_4.jpeg',
   ];
 
   return (
