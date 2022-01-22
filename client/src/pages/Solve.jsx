@@ -404,13 +404,17 @@ const SidebarContent = styled.div`
     width: 100%;
     line-height: 120%;
     user-select: none;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     cursor: pointer;
+
     :first-child {
       width: auto;
       margin-right: 0.5rem;
+    }
+
+    :last-child {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 `;

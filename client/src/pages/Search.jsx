@@ -1,12 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
-// import SetCard from '../components/SetCard';
 import SetCardVerTwo from '../components/SetCardVerTwo';
 import MoveTopButton from '../components/MoveTopButton';
-
 import { searchSets, popularSets } from '../api/SearchSetAPI';
-// import { useLocation } from 'react-router-dom';
 
 const Container = styled.div`
   max-width: 1216px;
@@ -16,7 +13,7 @@ const SetsContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 75%;
+  width: 60%;
   margin: 0 auto 0.5rem auto;
   font-size: 1rem;
   color: var(--warm-grey);
@@ -51,7 +48,7 @@ const CardsContainer = styled.div`
 const ShowBox = styled.section`
   display: flex;
   justify-content: flex-end;
-  width: 75%;
+  width: 60%;
   margin: 0 auto;
 
   @media all and (max-width: 767px) {
@@ -60,23 +57,11 @@ const ShowBox = styled.section`
   }
 `;
 
-const Divider = styled.div`
-  width: 70%;
-  height: 2px;
-  margin: 0 15% 2rem 15%;
-  background-color: var(--orangey-yellow);
-
-  @media all and (max-width: 767px) {
-    width: calc(100% - 2rem);
-    margin: 0 1rem;
-  }
-`;
-
 // * Search Bar
 const SearchContainer = styled.div`
   display: flex;
-  width: 75%;
-  margin: 1rem auto;
+  width: 60%;
+  margin: 2rem auto 1rem;
 
   @media all and (max-width: 767px) {
     width: calc(100% - 2rem);

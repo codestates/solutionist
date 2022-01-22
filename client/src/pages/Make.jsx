@@ -163,12 +163,14 @@ const SidebarContent = styled.div`
     line-height: 120%;
     user-select: none;
     cursor: pointer;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     :first-child {
       width: auto;
       margin-right: 0.5rem;
+    }
+    :last-child {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 `;
@@ -202,7 +204,7 @@ const Make = () => {
       },
     ],
   });
-  const [curPos, setCurPos] = useState(0);
+  const [curPos, setCurPos] = useState(1);
   const makeRef = useRef(null);
   const navRefs = useRef([0]);
 
@@ -259,33 +261,32 @@ const Make = () => {
   };
 
   const handleNav = (e) => {
-    navRefs.current[e.target.id].scrollIntoView({ behavior: 'smooth' });
+    navRefs.current[e.target.id].scrollIntoView({ behavior: 'smooth', block: 'center' });
   };
 
-  const [Qpos, setQpos] = useState([]);
-
-  useEffect(() => {
-    const arr = [0];
-    navRefs.current
-      .map((el) => {
-        if (el) return el.offsetTop;
-      })
-      .reduce((acc, cur) => {
-        if (!isNaN(cur)) {
-          arr.push((cur + acc) / 2);
-          return cur;
-        }
-      });
-    setQpos(arr);
-  }, [data]);
-
-  const handleScroll = (e) => {
-    for (let i = 0; i < Qpos.length; i++) {
-      if (Qpos[i] - 100 < makeRef.current.scrollTop) {
-        setCurPos(i);
+  const handleScroll = (pos) => {
+    for (let i = 0; i < pos.length + 1; i++) {
+      if (window.scrollY + window.innerHeight / 2 < pos[i]) {
+        return setCurPos(i - 1);
       }
     }
   };
+
+  const listenerScroll = () => handleScroll(questionPos);
+  const questionPos = [0];
+
+  useEffect(() => {
+    navRefs.current.map((el) => {
+      if (el) {
+        questionPos.push(el.offsetTop);
+      }
+    });
+
+    questionPos.push(document.documentElement.scrollHeight);
+
+    document.addEventListener('scroll', listenerScroll);
+    return () => document.removeEventListener('scroll', listenerScroll);
+  }, [data]);
 
   const [message, setMessage] = useState(['+ 버튼을 눌러 문제를 추가해보세요.', '']);
 
@@ -317,7 +318,7 @@ const Make = () => {
                 onClick={handleNav}
                 id={idx}
                 key={`#Q${idx + 1}`}
-                weight={curPos === idx ? 'bold' : 'normal'}
+                weight={curPos - 1 === idx ? 'bold' : 'normal'}
               >
                 <div id={idx}>{idx + 1}</div>
                 <div id={idx}>{problem.question}</div>
