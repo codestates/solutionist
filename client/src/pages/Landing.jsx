@@ -50,7 +50,7 @@ const Section = styled.div`
       content: '';
       width: 100%;
       height: 100%;
-      background-image: url('assets/images/LandingBG.png');
+      background-image: url('/assets/images/LandingBG.png');
       background-size: cover;
       opacity: 0.1;
       z-index: 0;
@@ -217,7 +217,7 @@ const Landing = () => {
             <p>다 함께 만들어가는</p>
             <p>문제 아카이브</p>
             <div>
-              <img src="assets/images/LandingLOGO.png" />
+              <img src="/assets/images/LandingLOGO.png" />
             </div>
           </Header>
           <HeaderContent>
@@ -225,7 +225,7 @@ const Landing = () => {
           </HeaderContent>
         </HeaderContainer>
         <ImageContainer>
-          <img style={{ margin: '0 0 0 1rem' }} src="assets/images/Section1.png" />
+          <img style={{ margin: '0 0 0 1rem' }} src="/assets/images/Section1.png" />
         </ImageContainer>
       </Section>
       <Section ref={(el) => (secRef.current[2] = el)}>
@@ -245,7 +245,7 @@ const Landing = () => {
           </Link>
         </TextContainer>
         <ImageContainer>
-          <img src="assets/images/Section2.gif" />
+          <img src="/assets/images/Section2.gif" />
         </ImageContainer>
       </Section>
       <Section ref={(el) => (secRef.current[3] = el)}>
@@ -266,7 +266,7 @@ const Landing = () => {
           </Link>
         </TextContainer>
         <ImageContainer>
-          <img src="assets/images/Section3.gif" />
+          <img src="/assets/images/Section3.gif" />
         </ImageContainer>
       </Section>
       <Section ref={(el) => (secRef.current[4] = el)}>
@@ -281,7 +281,7 @@ const Landing = () => {
           </Content>
         </TextContainer>
         <ImageContainer>
-          <img src="assets/images/Section4.gif" />
+          <img src="/assets/images/Section4.gif" />
         </ImageContainer>
       </Section>
       <Section ref={(el) => (secRef.current[5] = el)}>
@@ -302,7 +302,7 @@ const Landing = () => {
           </Link>
         </TextContainer>
         <ImageContainer>
-          <img src="assets/images/Section5.gif" />
+          <img src="/assets/images/Section5.gif" />
         </ImageContainer>
       </Section>
       <Last ref={(el) => (secRef.current[6] = el)}>

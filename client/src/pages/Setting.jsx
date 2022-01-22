@@ -23,8 +23,7 @@ const MainContainer = styled.div`
 const SettingContainer = styled.div`
   display: grid;
   width: 100%;
-  margin-top: 40px;
-  grid-template-columns: 1fr 56.6% 1fr;
+  grid-template-columns: 1fr 50% 1fr;
   grid-template-areas:
     '. one .'
     '. two .'
@@ -33,7 +32,6 @@ const SettingContainer = styled.div`
     '. five. ';
 
   div:first-child {
-    font-size: 1.2rem;
     grid-area: one;
   }
 
@@ -58,10 +56,10 @@ const SettingContainer = styled.div`
   }
 
   @media all and (max-width: 1023px) {
-    grid-template-columns: 1fr 56.6% 1fr;
+    grid-template-columns: 1fr 60% 1fr;
   }
   @media all and (max-width: 767px) {
-    grid-template-columns: 2% 96% 2%;
+    grid-template-columns: 1rem 1fr 1rem;
     margin-top: 0px;
   }
 `;
@@ -69,14 +67,10 @@ const SettingContainer = styled.div`
 const Title = styled.div`
   align-self: flex-end;
   font-family: Noto Sans KR;
-  font-style: bold;
-  cursor: default;
-`;
-
-const SubTitle = styled.div`
-  align-self: flex-end;
-  font-family: Noto Sans KR;
-  cursor: default;
+  font-weight: bold;
+  user-select: none;
+  font-size: 1.5rem;
+  margin: 1rem 0;
 `;
 
 const LeftSide = styled.div`
@@ -85,9 +79,9 @@ const LeftSide = styled.div`
   flex: none;
   justify-content: flex-start;
   font-family: Noto Sans KR;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin-left: 5px;
-  cursor: default;
+  user-select: none;
 
   @media all and (max-width: 1023px) {
     width: 80px;
@@ -112,21 +106,6 @@ const EditContainer = styled.div`
   justify-content: flex-start;
 `;
 
-const ChangePwContainer = styled.div`
-  display: flex;
-  justify-content: right;
-  align-items: center;
-  gap: 1rem;
-  @media ${device.mobile} {
-    justify-content: center;
-    font-size: 1rem;
-  }
-  p {
-    font-family: Noto Sans KR;
-    font-size: 1rem;
-  }
-`;
-
 const PersonalInfo = styled.div`
   display: flex;
   flex-direction: column;
@@ -134,7 +113,6 @@ const PersonalInfo = styled.div`
   justify-content: center;
   margin-left: 15px;
   > p {
-    /* margin-top: 10%; */
     margin-top: 0.5rem;
     font-size: 0.8rem;
     font-family: Noto Sans KR;
@@ -392,7 +370,7 @@ const StyledButton = styled.button`
   border: none;
   background: none;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   border-radius: 10px;
   box-shadow: 0 0 0 2px inset black;
   margin-left: -5px;
@@ -404,11 +382,12 @@ const StyledButton = styled.button`
   cursor: pointer;
   font-family: Noto Sans KR;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: bold;
   color: var(--black);
 
   &:hover {
-    opacity: 0.75;
+    background-color: black;
+    color: var(--butterscotch);
   }
   @media ${device.tablet} {
     font-size: 1rem;

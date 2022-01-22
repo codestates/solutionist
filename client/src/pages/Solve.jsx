@@ -87,7 +87,6 @@ const Desc = styled.div`
 `;
 const Info = styled.div`
   display: flex;
-  flex-direction: column;
   width: 50%;
   margin: 0.5rem 25% 1rem;
   line-height: 120%;
@@ -95,6 +94,7 @@ const Info = styled.div`
   word-wrap: break-word;
   word-break: keep-all;
   resize: none;
+  justify-content: space-between;
   p {
     font-family: 'GowunDodum-Regular', sans-serif;
     margin-bottom: 0.25rem;
@@ -110,6 +110,26 @@ const Info = styled.div`
   @media all and (max-width: 767px) {
     width: calc(100% - 2rem);
     margin: 0.5rem 1rem;
+  }
+`;
+const InfoContent = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+const Start = styled.div`
+  display: flex;
+  font-size: 3rem;
+  align-items: center;
+  opacity: 0.5;
+  cursor: pointer;
+  :hover {
+    opacity: 1;
+  }
+  p {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    font-family: Noto Sans KR;
+    font-weight: bold;
   }
 `;
 const Divider = styled.div`
@@ -592,20 +612,21 @@ const Solve = () => {
           <Title>{set.title}</Title>
           <Desc>{set.description}</Desc>
           <Info>
-            <p>
-              by <span>{set.creator ? set.creator : '익명의 Solutionist'}</span>
-            </p>
-            <p>at {set.createdAt}</p>
-            <p>
-              <span>{set.solvedUserNumber}</span>명 풀이 완료
-            </p>
+            <InfoContent>
+              <p>
+                by <span>{set.creator ? set.creator : '익명의 Solutionist'}</span>
+              </p>
+              <p>at {set.createdAt}</p>
+              <p>
+                <span>{set.solvedUserNumber}</span>명 풀이 완료
+              </p>
+            </InfoContent>
+            <Start>
+              <p>문제 풀기</p>
+              <FaCaretSquareRight onClick={handleStart} />
+            </Start>
           </Info>
           <Divider />
-          <ButtonContainer>
-            <div>
-              <FaCaretSquareRight onClick={handleStart} />
-            </div>
-          </ButtonContainer>
           {/* 튜토리얼 작업 */}
           <TutorialContainer>
             <Tutorial imagesArr={imagesArr} />
