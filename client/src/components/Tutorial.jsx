@@ -1,7 +1,27 @@
 import React, { useState, useRef, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
+
+const ArrowRight = keyframes`
+0% {
+  transform: translateX(0);
+}
+100% {
+  transform: translateX(0.25rem) scale(1.05, 0.9);
+}
+
+`;
+const ArrowLeft = keyframes`
+0% {
+  transform: translateX(0);
+}
+100% {
+  transform: translateX(-0.25rem) scale(1.05, 0.9);
+}
+`;
 
 const Container = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,51 +45,35 @@ const Container = styled.div`
 
 const MoveBtnPrev = styled.button`
   position: absolute;
-  font-size: 1rem;
-  font-weight: 500;
-  border: 0;
-  outline: 0;
-  border-radius: 50%;
+  font-size: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--light--gray);
-  width: 4rem;
-  height: 4rem;
-
-  left: 11rem;
-  z-index: 999;
-
-  @media all and (max-width: 1023px) {
-    left: 4rem;
-  }
-  @media all and (max-width: 767px) {
-    left: 17rem;
+  width: 2rem;
+  height: 2rem;
+  top: 1rem;
+  left: 1rem;
+  z-index: 900;
+  cursor: pointer;
+  :hover {
+    animation: ${ArrowLeft} 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) infinite alternate;
   }
 `;
 
 const MoveBtnNext = styled.button`
   position: absolute;
-  font-size: 1rem;
-  font-weight: 500;
-  border: 0;
-  outline: 0;
-  border-radius: 50%;
+  font-size: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--light--gray);
-  width: 4rem;
-  height: 4rem;
-
-  right: 11rem;
+  width: 2rem;
+  height: 2rem;
+  top: 1rem;
+  right: 1rem;
   z-index: 900;
-
-  @media all and (max-width: 1023px) {
-    right: 4rem;
-  }
-  @media all and (max-width: 767px) {
-    right: 17rem;
+  cursor: pointer;
+  :hover {
+    animation: ${ArrowRight} 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) infinite alternate;
   }
 `;
 
@@ -130,14 +134,18 @@ const Tutorial = ({ imagesArr }) => {
   return (
     <Container>
       {tutorialIdx > 4 ? (
-        <MoveBtnPrev onClick={handleMoveToPrev}>이전</MoveBtnPrev>
+        <MoveBtnPrev onClick={handleMoveToPrev}>
+          <FaChevronLeft />
+        </MoveBtnPrev>
       ) : (
-        <></>
+        ''
       )}
       {tutorialIdx < 7 ? (
-        <MoveBtnNext onClick={tutorialIdx < 7 ? handleMoveToNext : ''}>다음</MoveBtnNext>
+        <MoveBtnNext onClick={handleMoveToNext}>
+          <FaChevronRight />
+        </MoveBtnNext>
       ) : (
-        <></>
+        ''
       )}
       <ImageContainer>
         <ImageList ref={slideTutorial}>
