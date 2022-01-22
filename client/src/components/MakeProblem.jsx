@@ -21,7 +21,7 @@ const ProblemContainer = styled.div`
     'number explanation explanation .';
 
   @media all and (max-width: 1023px) {
-    grid-template-columns: 25% 45% 15% 15%;
+    grid-template-columns: 20% 45% 15% 20%;
   }
   @media all and (max-width: 767px) {
     margin: 0 1rem;
@@ -330,6 +330,7 @@ const MakeProblem = ({ problem, data, setData, idx, navRefs }) => {
       {problem.isOX ? (
         <>
           <Question
+            spellCheck={false}
             placeholder="문제를 입력해주세요."
             onInput={autoGrow}
             onChange={handleChange}
@@ -369,6 +370,7 @@ const MakeProblem = ({ problem, data, setData, idx, navRefs }) => {
           </OxChoices>
           <ExplanationContainer>
             <Explanation
+              spellCheck={false}
               placeholder="해설"
               onChange={handleChange}
               value={problem.explanation}
@@ -379,6 +381,7 @@ const MakeProblem = ({ problem, data, setData, idx, navRefs }) => {
       ) : (
         <>
           <Question
+            spellCheck={false}
             placeholder="문제를 입력해주세요."
             onInput={autoGrow}
             onChange={handleChange}
@@ -417,6 +420,7 @@ const MakeProblem = ({ problem, data, setData, idx, navRefs }) => {
                   fontWeight={choice.index === problem.answer ? 'bold' : 'initial'}
                 >{`${idx + 1}.`}</ChoiceNum>
                 <ChoiceContent
+                  spellCheck={false}
                   placeholder={`${idx + 1}번 보기`}
                   onChange={handleChange}
                   value={choice.content}
@@ -442,6 +446,7 @@ const MakeProblem = ({ problem, data, setData, idx, navRefs }) => {
           </Counter>
           <ExplanationContainer>
             <Explanation
+              spellCheck={false}
               placeholder="해설"
               onChange={handleChange}
               value={problem.explanation}

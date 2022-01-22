@@ -16,7 +16,7 @@ const ProblemContainer = styled.div`
     'statIcon explanation .';
 
   @media all and (max-width: 1023px) {
-    grid-template-columns: 25% 60% 15%;
+    grid-template-columns: 20% 60% 20%;
   }
   @media all and (max-width: 767px) {
     margin: 0 1rem;

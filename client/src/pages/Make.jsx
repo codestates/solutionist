@@ -11,7 +11,7 @@ const MakeContainer = styled.div`
   height: calc(100% - 4rem - 70px);
   max-width: 1216px;
   margin: 0 auto;
-  padding: 1rem 0 2rem;
+  padding: 1rem 0 7rem;
 
   *::placeholder {
     opacity: 0.5;
@@ -29,7 +29,7 @@ const Header = styled.div`
 
   @media all and (max-width: 1023px) {
     width: 60%;
-    margin: 0 15% 0.5rem 25%;
+    margin: 0 20% 0.5rem;
   }
   @media all and (max-width: 767px) {
     width: calc(100% - 2rem);
@@ -52,7 +52,7 @@ const Title = styled.textarea`
 
   @media all and (max-width: 1023px) {
     width: 60%;
-    margin: 0 15% 0 25%;
+    margin: 0 20%;
   }
   @media all and (max-width: 767px) {
     width: calc(100% - 2rem);
@@ -75,7 +75,7 @@ const Desc = styled.textarea`
 
   @media all and (max-width: 1023px) {
     width: 60%;
-    margin: 0.5rem 15% 1rem 25%;
+    margin: 0.5rem 20% 1rem;
   }
   @media all and (max-width: 767px) {
     width: calc(100% - 2rem);
@@ -92,7 +92,7 @@ const Divider = styled.div`
 
   @media all and (max-width: 1023px) {
     width: 60%;
-    margin: 0 15% 0 25%;
+    margin: 0 20%;
   }
   @media all and (max-width: 767px) {
     width: calc(100% - 2rem);
@@ -149,7 +149,7 @@ const ButtonContainer = styled.div`
 
   @media all and (max-width: 1023px) {
     width: 60%;
-    margin: 1rem 15% 0 25%;
+    margin: 1rem 20%;
   }
   @media all and (max-width: 767px) {
     width: calc(100% - 2rem);
@@ -333,6 +333,7 @@ const Make = () => {
         <p>세트 만들기</p>
       </Header>
       <Title
+        spellCheck={false}
         placeholder="세트 제목을 입력해주세요."
         value={data.title}
         onChange={handleChange}
@@ -340,6 +341,7 @@ const Make = () => {
         onInput={autoGrow}
       />
       <Desc
+        spellCheck={false}
         placeholder="세트 설명을 입력해주세요."
         value={data.description}
         onChange={handleChange}
