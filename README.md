@@ -1,8 +1,8 @@
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/46926683/150644469-5c76a59c-dcd9-4358-912d-28e60d06d92b.png" alt="solutionist" width="35%"/>  
+	<img src="https://user-images.githubusercontent.com/46926683/150649270-250ad2f4-7725-4318-bb17-840002a3c19b.jpg" alt="solutionist" width="35%"/>  
 </p>  
-  
+
 <p align="center">
 <a id = "txt" href="https://solutionist.site" target="_blank">✏️🧑🏻‍🎓solutionist</a>는 아카이브를 만들고,풀고,다 함께 수정할 수 있으며,공유할 수 있는 웹서비스입니다.
   </p>  
@@ -151,14 +151,5 @@ SOLUTIONIST는 객관식, OX 문제 그리고 정답이 없는 설문조사를 �
 
 ***
 
-<details>
-<summary>solutionist로 이동하기</summary>
-<div markdown="1">
-	
-<details>
-<summary>solutionist로 이동하기</summary>
-<div markdown="2">
-  
-  <p>업데이트 예정</p>
-</div>
-</details>
+
+<a id = "txt" href="https://solutionist.site" target="_blank"><img src="https://user-images.githubusercontent.com/46926683/150649296-d9949599-33fc-4aca-9258-04e733320067.png" width="17" style="max-width: 100%;">체험하러가기</a>
