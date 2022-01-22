@@ -11,7 +11,7 @@ const Container = styled.div`
 
   width: 50%;
   height: 400px;
-  margin: 0 25%;
+  margin: 1rem 25% 0;
 
   @media all and (max-width: 1023px) {
     width: 60%;

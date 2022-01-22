@@ -221,24 +221,17 @@ const Message = styled.div`
     margin: auto;
   }
 `;
+const TutorialContainer = styled.div`
+  width: 100%;
+  overflow: hidden;
+  display: ${(props) => props.display};
+`;
 
 const Make = () => {
   const [data, setData] = useState({
     title: '',
     description: '',
-    problems: [
-      {
-        index: 1,
-        question: '',
-        answer: '',
-        explanation: '',
-        isOX: false,
-        choice: [
-          { index: 1, content: '' },
-          { index: 2, content: '' },
-        ],
-      },
-    ],
+    problems: [],
   });
   const [curPos, setCurPos] = useState(1);
   const makeRef = useRef(null);
@@ -328,10 +321,10 @@ const Make = () => {
 
   // 튜토리얼 이미지 Make 수정 예정
   const imagesArr = [
-    '../../assets/images/tutorial1.png',
-    '../../assets/images/tutorial2.png',
-    '../../assets/images/tutorial3.png',
-    '../../assets/images/tutorial4.png',
+    '/assets/images/tutorial1.png',
+    '/assets/images/tutorial2.png',
+    '/assets/images/tutorial3.png',
+    '/assets/images/tutorial4.png',
   ];
 
   return (
@@ -354,8 +347,9 @@ const Make = () => {
         onInput={autoGrow}
       />
       <Divider />
-      {/* 튜토리얼 작업 */}
-      <Tutorial imagesArr={imagesArr} />
+      <TutorialContainer display={data.problems.length === 0 ? 'block' : 'none'}>
+        <Tutorial imagesArr={imagesArr} />
+      </TutorialContainer>
       <SidebarContainer>
         <SideRelative>
           <Sidebar>
