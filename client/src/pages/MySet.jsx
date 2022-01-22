@@ -58,6 +58,8 @@ const CardsContainer = styled.div`
 
 const StyledLink = styled(Link)`
   color: var(--warm-grey);
+  overflow: initial;
+  line-height: 25px;
 `;
 
 const ShowBox = styled.section`

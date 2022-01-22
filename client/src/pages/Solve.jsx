@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { FaCaretSquareLeft, FaCaretSquareRight, FaChartBar } from 'react-icons/fa';
 import OIcon from '../icons/O';
 import XIcon from '../icons/X';
+import Tutorial from '../components/Tutorial';
 
 const SolveContainer = styled.div`
   position: relative;
@@ -569,6 +570,8 @@ const Solve = () => {
               <FaCaretSquareRight onClick={handleStart} />
             </div>
           </ButtonContainer>
+          {/* 튜토리얼 작업 */}
+          {/* <Tutorial /> */}
         </>
       ) : (
         <>

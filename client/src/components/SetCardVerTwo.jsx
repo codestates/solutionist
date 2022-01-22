@@ -11,12 +11,13 @@ import TrashIcon from '../icons/Trash';
 import UpdateIcon from '../icons/Update';
 import KakaoIcon from '../icons/Kakao';
 import { GrDocumentUpdate } from 'react-icons/gr';
-import { RiKakaoTalkLine } from 'react-icons/ri';
 import { HiOutlineClipboardCopy } from 'react-icons/hi';
+import { RiKakaoTalkLine, RiClipboardLine } from 'react-icons/ri';
 import { VscOutput } from 'react-icons/vsc';
 
 import { Link } from 'react-router-dom';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+
 import { useNavigate } from 'react-router-dom';
 import { deleteSets } from '../api/SearchSetAPI';
 
@@ -141,6 +142,17 @@ const Menu = styled.li`
   flex: 1;
   margin: auto;
   color: white;
+  cursor: pointer;
+
+  > span:hover {
+    color: var(--orangey-yellow);
+    /* fill: var(--orange-yellow); */
+  }
+
+  > svg:hover {
+    color: var(--orangey-yellow);
+    /* fill: var(--orangey-yellow); */
+  }
 
   svg {
     width: 1.75rem;
@@ -156,6 +168,17 @@ const StyledLink = styled(Link)`
   flex: 1;
   margin: auto;
   color: white;
+  stroke: white;
+
+  > span:hover {
+    color: var(--orangey-yellow);
+    /* fill: var(--orange-yellow); */
+  }
+
+  > svg:hover {
+    color: var(--white);
+    /* fill: var(--orangey-yellow); */
+  }
 `;
 
 const SetCardVerTwo = ({
@@ -328,14 +351,15 @@ const SetCardVerTwo = ({
               <MenuContainer>
                 <Menu>
                   <StyledLink to={/solve/ + id}>
-                    <EditIcon fill="white" /> 풀기
+                    <EditIcon fill="white" /> <span>풀기</span>
                     {/* // TODO : /solve 로 이동 */}
                   </StyledLink>
                 </Menu>
                 <Menu>
                   <StyledLink to={/edit/ + id}>
-                    <UpdateIcon fill="none" stroke="white" strokeWidth="2" /> 수정
-                    {/* <GrDocumentUpdate /> */}
+                    <UpdateIcon fill="none" stroke="white" strokeWidth="2" />{' '}
+                    <span>수정</span>
+                    {/* <GrDocumentUpdate stroke="#fff" strokeWidth="2" /> 수정 */}
                     {/* // TODO : /edit 로 이동 */}
                   </StyledLink>
                 </Menu>
@@ -343,29 +367,27 @@ const SetCardVerTwo = ({
                   {isShare ? (
                     <>
                       <CopyToClipboard text={solveUrl}>
-                        <HiOutlineClipboardCopy />
+                        <RiClipboardLine />
                       </CopyToClipboard>
-                      {/* <KakaoIcon  fill="white" strokeWidth="0" /> */}
-                      {/* // ! 크기가 뭔가 안크다... */}
                       <RiKakaoTalkLine onClick={shareKakao} />
                     </>
                   ) : (
                     <>
-                      <ShareIcon fill="white" /> 공유
+                      <ShareIcon fill="white" /> <span>공유</span>
                     </>
                   )}
                   {/* // TODO : 클립보드 & 카카오 공유 선택 */}
                 </Menu>
                 {isMade && (
                   <Menu onClick={handleDelete}>
-                    <TrashIcon fill="white" /> 삭제
+                    <TrashIcon fill="white" /> <span>삭제</span>
                     {/* // TODO : display:none? 안보이게 처리 */}
                   </Menu>
                 )}
                 {!isMade && (
                   <Menu>
                     <StyledLink to={/result/ + id + '/' + recordId}>
-                      <VscOutput /> 결과
+                      <VscOutput /> <span>결과</span>
                     </StyledLink>
                   </Menu>
                 )}
