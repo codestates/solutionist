@@ -595,7 +595,6 @@ const Solve = () => {
             <p>
               by <span>{set.creator ? set.creator : '익명의 Solutionist'}</span>
             </p>
-            <p>at {set.createdAt}</p>
             <p>
               <span>{set.solvedUserNumber}</span>명 풀이 완료
             </p>

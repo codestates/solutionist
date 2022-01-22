@@ -119,8 +119,6 @@ const Tutorial = ({ imagesArr }) => {
     setTutorialIdx(tutorialIdx + 1);
   };
 
-  console.log(imagesArr);
-
   useEffect(() => {
     slideTutorial.current?.style.setProperty(
       'transform',
@@ -144,7 +142,7 @@ const Tutorial = ({ imagesArr }) => {
       <ImageContainer>
         <ImageList ref={slideTutorial}>
           {imagesArr.map((image) => (
-            <ImageItem>
+            <ImageItem key={image}>
               <Image>
                 <img src={image} />
               </Image>

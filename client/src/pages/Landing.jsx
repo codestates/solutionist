@@ -238,7 +238,7 @@ const Landing = () => {
             <p>풀고 나서 결과를 확인해보세요.</p>
             <p>다른 사람들의 생각도 알 수 있습니다.</p>
           </Content>
-          <Link to="/make">
+          <Link to="/solve/41">
             <Chicken>
               치킨 모의고사 풀러가기 <FaArrowRight size="0.75rem" />
             </Chicken>
