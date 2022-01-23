@@ -45,8 +45,8 @@ SOLUTIONIST는 객관식, OX 문제 그리고 정답이 없는 설문조사를 �
   <div dir ="auto">
     <br>
     <a>
-      <img src="https://user-images.githubusercontent.com/46926683/150644928-773105a1-ea4f-4cf7-97f3-ab8388469887.png" width="400" height='550' style="max-width: 100%;">
-      <img src="https://user-images.githubusercontent.com/46926683/150645086-df0954ce-e56a-43f0-8b43-ca9bcc513ba5.png" width="400" height='550' style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150644928-773105a1-ea4f-4cf7-97f3-ab8388469887.png" width="500" height='650' style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150645086-df0954ce-e56a-43f0-8b43-ca9bcc513ba5.png" width="500" height='650' style="max-width: 100%;">
     </a>
   </div>
 </details>
@@ -57,7 +57,7 @@ SOLUTIONIST는 객관식, OX 문제 그리고 정답이 없는 설문조사를 �
   <div dir ="auto">
     <br>
     <a>
-      <img src="https://user-images.githubusercontent.com/46926683/150648223-c458919c-0cc6-4cd1-9ece-ff7e78356e71.png" width="400" height='400' style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150648223-c458919c-0cc6-4cd1-9ece-ff7e78356e71.png" width="500" height='500' style="max-width: 100%;">
     </a>
   </div>
 </details>
@@ -68,7 +68,7 @@ SOLUTIONIST는 객관식, OX 문제 그리고 정답이 없는 설문조사를 �
   <div dir ="auto">
     <br>
     <a>
-      <img src="https://user-images.githubusercontent.com/46926683/150648312-d015c7d0-0341-41c8-ba01-7c0f5d0b37b6.png" width="400" height='400' style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150648312-d015c7d0-0341-41c8-ba01-7c0f5d0b37b6.png" width="500" height='500' style="max-width: 100%;">
     </a>
   </div>
 </details>
@@ -79,7 +79,7 @@ SOLUTIONIST는 객관식, OX 문제 그리고 정답이 없는 설문조사를 �
   <div dir ="auto">
     <br>
     <a>
-      <img src="https://user-images.githubusercontent.com/46926683/150648679-bb9ebaba-98b5-4278-a2d9-91dc0d927697.png" width="400" height='400' style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150648679-bb9ebaba-98b5-4278-a2d9-91dc0d927697.png" width="500" height='500' style="max-width: 100%;">
     </a>
   </div>
 </details>
@@ -90,10 +90,10 @@ SOLUTIONIST는 객관식, OX 문제 그리고 정답이 없는 설문조사를 �
   <div dir ="auto">
     <br>
     <a>
-      <img src="https://user-images.githubusercontent.com/46926683/150643654-8f2bfea6-e074-4fbc-ad19-100445e4ec16.png" width="400" style="max-width: 100%;">
-      <img src="https://user-images.githubusercontent.com/46926683/150643669-a2b60833-ea94-4016-870d-4abdd671b24a.png" width="400" style="max-width: 100%;">
-      <img src="https://user-images.githubusercontent.com/46926683/150643672-5609de97-08af-4143-97a4-163e6412b9ed.png" width="400" style="max-width: 100%;">
-      <img src="https://user-images.githubusercontent.com/46926683/150643678-f6b37c5a-043c-486d-89b4-835dbe1ae919.png" width="400" style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150643654-8f2bfea6-e074-4fbc-ad19-100445e4ec16.png" width="480" style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150643669-a2b60833-ea94-4016-870d-4abdd671b24a.png" width="480" style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150643672-5609de97-08af-4143-97a4-163e6412b9ed.png" width="480" style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150643678-f6b37c5a-043c-486d-89b4-835dbe1ae919.png" width="480" style="max-width: 100%;">
     </a>
   </div>
 </details>
@@ -104,10 +104,10 @@ SOLUTIONIST는 객관식, OX 문제 그리고 정답이 없는 설문조사를 �
   <div dir ="auto">
     <br>
     <a>
-      <img src="https://user-images.githubusercontent.com/46926683/150643952-7c769ba2-9079-462d-a5d4-31056d9287c3.png" width="400" style="max-width: 100%;">
-      <img src="https://user-images.githubusercontent.com/46926683/150643958-28b85c1c-e5f8-4a02-9648-853c35d4e80d.png" width="400" style="max-width: 100%;">
-      <img src="https://user-images.githubusercontent.com/46926683/150643960-fea13164-7bc1-4df9-845f-a9d4e1cda696.png" width="400" style="max-width: 100%;">
-      <img src="https://user-images.githubusercontent.com/46926683/150643964-e912ab19-7cba-41fd-8c9b-b4bbb3ab9e85.png" width="400" style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150643952-7c769ba2-9079-462d-a5d4-31056d9287c3.png" width="480" style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150643958-28b85c1c-e5f8-4a02-9648-853c35d4e80d.png" width="480" style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150643960-fea13164-7bc1-4df9-845f-a9d4e1cda696.png" width="480" style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150643964-e912ab19-7cba-41fd-8c9b-b4bbb3ab9e85.png" width="480" style="max-width: 100%;">
     </a>
   </div>
 </details>
@@ -118,7 +118,7 @@ SOLUTIONIST는 객관식, OX 문제 그리고 정답이 없는 설문조사를 �
   <div dir ="auto">
     <br>
     <a>
-      <img src="https://user-images.githubusercontent.com/46926683/150649022-208bb855-7a9d-4251-a712-7b587eb5ca15.png" width="450" height="450" style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150649022-208bb855-7a9d-4251-a712-7b587eb5ca15.png" width="500" height="500" style="max-width: 100%;">
     </a>
   </div>
 </details>
@@ -126,6 +126,10 @@ SOLUTIONIST는 객관식, OX 문제 그리고 정답이 없는 설문조사를 �
 <br>
 
 ### 스택
+
+<a>
+	<img src="https://user-images.githubusercontent.com/46926683/150668515-4692731e-7562-4901-bc82-0b2a501e1acc.png" width="650" height="550" style="max-width: 100%;">
+</a>
 
 ***
 
