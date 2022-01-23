@@ -45,8 +45,8 @@ SOLUTIONIST는 객관식, OX 문제 그리고 정답이 없는 설문조사를 �
   <div dir ="auto">
     <br>
     <a>
-      <img src="https://user-images.githubusercontent.com/46926683/150644928-773105a1-ea4f-4cf7-97f3-ab8388469887.png" width="500" height='650' style="max-width: 100%;">
-      <img src="https://user-images.githubusercontent.com/46926683/150645086-df0954ce-e56a-43f0-8b43-ca9bcc513ba5.png" width="500" height='650' style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150644928-773105a1-ea4f-4cf7-97f3-ab8388469887.png" width="350" height='500' style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150645086-df0954ce-e56a-43f0-8b43-ca9bcc513ba5.png" width="350" height='500' style="max-width: 100%;">
     </a>
   </div>
 </details>
