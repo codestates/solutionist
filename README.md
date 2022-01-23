@@ -90,10 +90,10 @@ SOLUTIONIST는 객관식, OX 문제 그리고 정답이 없는 설문조사를 �
   <div dir ="auto">
     <br>
     <a>
-      <img src="https://user-images.githubusercontent.com/46926683/150643654-8f2bfea6-e074-4fbc-ad19-100445e4ec16.png" width="480" style="max-width: 100%;">
-      <img src="https://user-images.githubusercontent.com/46926683/150643669-a2b60833-ea94-4016-870d-4abdd671b24a.png" width="480" style="max-width: 100%;">
-      <img src="https://user-images.githubusercontent.com/46926683/150643672-5609de97-08af-4143-97a4-163e6412b9ed.png" width="480" style="max-width: 100%;">
-      <img src="https://user-images.githubusercontent.com/46926683/150643678-f6b37c5a-043c-486d-89b4-835dbe1ae919.png" width="480" style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150643654-8f2bfea6-e074-4fbc-ad19-100445e4ec16.png" width="450" style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150643669-a2b60833-ea94-4016-870d-4abdd671b24a.png" width="450" style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150643672-5609de97-08af-4143-97a4-163e6412b9ed.png" width="450" style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150643678-f6b37c5a-043c-486d-89b4-835dbe1ae919.png" width="450" style="max-width: 100%;">
     </a>
   </div>
 </details>
@@ -104,10 +104,10 @@ SOLUTIONIST는 객관식, OX 문제 그리고 정답이 없는 설문조사를 �
   <div dir ="auto">
     <br>
     <a>
-      <img src="https://user-images.githubusercontent.com/46926683/150643952-7c769ba2-9079-462d-a5d4-31056d9287c3.png" width="480" style="max-width: 100%;">
-      <img src="https://user-images.githubusercontent.com/46926683/150643958-28b85c1c-e5f8-4a02-9648-853c35d4e80d.png" width="480" style="max-width: 100%;">
-      <img src="https://user-images.githubusercontent.com/46926683/150643960-fea13164-7bc1-4df9-845f-a9d4e1cda696.png" width="480" style="max-width: 100%;">
-      <img src="https://user-images.githubusercontent.com/46926683/150643964-e912ab19-7cba-41fd-8c9b-b4bbb3ab9e85.png" width="480" style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150643952-7c769ba2-9079-462d-a5d4-31056d9287c3.png" width="450" style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150643958-28b85c1c-e5f8-4a02-9648-853c35d4e80d.png" width="450" style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150643960-fea13164-7bc1-4df9-845f-a9d4e1cda696.png" width="450" style="max-width: 100%;">
+      <img src="https://user-images.githubusercontent.com/46926683/150643964-e912ab19-7cba-41fd-8c9b-b4bbb3ab9e85.png" width="450" style="max-width: 100%;">
     </a>
   </div>
 </details>
