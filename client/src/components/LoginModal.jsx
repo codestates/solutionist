@@ -442,7 +442,7 @@ const LoginModal = ({
                       <label>이메일</label>
                       <input
                         onChange={handleInputValue(Object.keys(loginInfo)[0])}
-                        placeholder="kimcoding@gmail.com"
+                        placeholder="이메일을 입력해주세요."
                       ></input>
                     </InputBox>
                     <InputBox>
@@ -450,7 +450,7 @@ const LoginModal = ({
                       <input
                         onChange={handleInputValue(Object.keys(loginInfo)[1])}
                         type={'password'}
-                        placeholder="**********"
+                        placeholder="비밀번호를 입력해주세요."
                       ></input>
                     </InputBox>
                     {errorMessage ? <p>{errorMessage}</p> : ''}
@@ -488,7 +488,7 @@ const LoginModal = ({
                       <input
                         onBlur={handleCheckDupliEmail}
                         onChange={onChangeEmail}
-                        placeholder="kimcoding@gmail.com"
+                        placeholder="이메일을 입력해주세요."
                       ></input>
                     </InputBox>
                     {valiErrMessage.ErrEmail ? (
@@ -504,7 +504,10 @@ const LoginModal = ({
                     )}
                     <InputBox>
                       <label>닉네임</label>
-                      <input onChange={onChangeUsername} placeholder="김코딩"></input>
+                      <input
+                        onChange={onChangeUsername}
+                        placeholder="닉네임을 입력해주세요."
+                      ></input>
                     </InputBox>
                     {valiErrMessage.ErrUsername ? (
                       valiInfo.isUsername ? (
@@ -520,7 +523,7 @@ const LoginModal = ({
                       <input
                         onChange={onChangePassword}
                         type={'password'}
-                        placeholder="**********"
+                        placeholder="비밀번호를 입력해주세요."
                       ></input>
                     </InputBox>
                     {valiErrMessage.ErrPassword ? (
@@ -537,7 +540,7 @@ const LoginModal = ({
                       <input
                         onChange={onChangePasswordConfirm}
                         type={'password'}
-                        placeholder="**********"
+                        placeholder="비밀번호를 다시 입력해주세요."
                       ></input>
                     </InputBox>
                     {valiErrMessage.ErrPasswordConfirm ? (

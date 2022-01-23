@@ -27,7 +27,7 @@ const Section = styled.div`
   align-items: center;
   font-size: 5rem;
   scroll-snap-align: center;
-  justify-content: space-evenly;
+  justify-content: center;
   overflow: hidden;
 
   :nth-child(2n) {
@@ -162,6 +162,7 @@ const ImageContainer = styled.div`
   height: 100%;
   max-width: 600px;
   max-height: 600px;
+  margin: 1rem;
 
   @media all and (orientation: portrait) {
     height: 50vh;
