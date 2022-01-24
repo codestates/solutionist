@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+              "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="0.422222in" height="0.366667in"
+     viewBox="0 0 38 33">
+  <path id="menu_icon"
+        d="M 1.50,31.50
+           C 1.50,31.50 36.50,31.50 36.50,31.50M 1.50,16.50
+           C 1.50,16.50 36.50,16.50 36.50,16.50M 1.50,1.50
+           C 1.50,1.50 36.50,1.50 36.50,1.50" />
+</svg>

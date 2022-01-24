@@ -1,0 +1,1406 @@
+openapi: 3.0.0
+info:
+  title: solutionist
+  description: solutionist desc
+  version: '1.0.0'
+servers:
+  - url: 'http://localhost:4000'
+tags:
+  - name: users
+    description: Operations about user
+  - name: myInfo
+    description: Operations about myInfo
+  - name: search && sets
+    description: Operations about sets
+paths:
+  /users/signup:
+    post:
+      tags:
+        - users
+      summary: signup
+      description: user signup
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+              required:
+                - username
+                - email
+                - password
+              example:
+                username: messi
+                email: messi@google.com
+                password: 'messi'
+        required: true
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    default: successfully signed in
+        '500':
+          description: internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: internal server error
+  /users/login:
+    post:
+      tags:
+        - users
+      summary: login
+      description: login
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+              required:
+                - email
+                - password
+              example:
+                email: messi@google.com
+                password: 'messi'
+        required: true
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  username:
+                    type: string
+                  email:
+                    type: string
+                  profileImage:
+                    type: string
+                example:
+                  id: 1
+                  username: 'messi'
+                  email: 'messi@google.com'
+                  profileImage: 'http://image.com'
+
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: invalid user
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: internal server error
+  /users/kakao:
+    post:
+      tags:
+        - users
+      summary: login kakao
+      description: login kakao
+      responses:
+        '201':
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  username:
+                    type: string
+                  email:
+                    type: string
+                  profileImage:
+                    type: string
+                example:
+                  id: 1
+                  username: 'messi'
+                  email: 'messi@google.com'
+                  profileImage: 'http://image.com'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: internal server error
+  /users/google:
+    post:
+      tags:
+        - users
+      summary: login google
+      description: login google
+      responses:
+        '201':
+          description: create
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  username:
+                    type: string
+                  email:
+                    type: string
+                  profileImage:
+                    type: string
+                example:
+                  id: 1
+                  username: 'messi'
+                  email: 'messi@google.com'
+                  profileImage: 'http://image.com'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: internal server error
+  /users/signout:
+    delete:
+      tags:
+        - users
+      summary: signout
+      description: signout
+      security:
+        - cookieAuth: []
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: successfully signed out
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: internal server error
+  /users/logout:
+    post:
+      tags:
+        - users
+      summary: logout
+      description: logout
+      security:
+        - cookieAuth: []
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: successfully logout
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: internal server error
+  /users/email/{email}:
+    get:
+      tags:
+        - users
+      summary: email
+      description: email
+      parameters:
+        - in: path
+          name: email # Note the name is the same as in the path
+          required: true
+          schema:
+            type: string
+          description: The email
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: email duplicate check passed
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: duplicate information
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: internal server error
+  /users/profileimage:
+    patch:
+      tags:
+        - myInfo
+      summary: profileImage modify
+      description: profileImage modify
+      security:
+        - cookieAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                # 'file' will be the field name in this multipart request
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: successfully profile image changed
+        '401':
+          description: invalid user
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: invalid user
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: internal server error
+  /users/username:
+    patch:
+      tags:
+        - myInfo
+      summary: modify username
+      description: modify username
+      security:
+        - cookieAuth: []
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              type: object
+              properties:
+                newUsername:
+                  type: string
+              required:
+                - newUsername
+            example:
+              newUsername: Ronaldo
+        required: true
+      responses:
+        '201':
+          description: create
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: successfully user name changed
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: duplicate information
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: internal server error
+  /users/password:
+    patch:
+      tags:
+        - myInfo
+      summary: modify password
+      description: modify password
+      security:
+        - cookieAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                newPassword:
+                  type: string
+              required:
+                - newPassword
+        required: true
+      responses:
+        '201':
+          description: create
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: successfully user name changed
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: duplicate information
+  /collections/:
+    get:
+      tags:
+        - myInfo
+      summary: my Collections
+      description: my Collections
+      security:
+        - cookieAuth: []
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                  username:
+                    type: string
+                  title:
+                    type: string
+                  description:
+                    type: string
+                  solvedUserNumber:
+                    type: integer
+                  averageScore:
+                    type: number
+                  createdAt:
+                    type: string
+                example:
+                  id: 1
+                  username: messi
+                  title: easy questions
+                  description: easy
+                  solvedUserNumber: 100
+                  averageScore: 50
+                  createdAt: 2021-12-18 22:51:20
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: invalid user
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: internal server error
+  /solve-records/:
+    get:
+      tags:
+        - myInfo
+      summary: my solveRecords
+      description: my solveRecords
+      security:
+        - cookieAuth: []
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                  username:
+                    type: string
+                  recordId:
+                    type: integer
+                  title:
+                    type: string
+                  description:
+                    type: string
+                  solvedUserNumber:
+                    type: integer
+                  averageScore:
+                    type: number
+                  createdAt:
+                    type: string
+                example:
+                  id: 1
+                  recordId: 1
+                  username: messi
+                  title: easy questions
+                  description: easy
+                  solvedUserNumber: 100
+                  averageScore: 50
+                  createdAt: 2021-12-18 22:51:20
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: invalid user
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: internal server error
+  /collections:
+    post:
+      tags:
+        - search && sets
+      summary: create set
+      security:
+        - cookieAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                setId:
+                  type: integer
+                title:
+                  type: string
+                description:
+                  type: string
+                problems:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      index:
+                        type: integer
+                      question:
+                        type: string
+                      answer:
+                        type: integer
+                      explanation:
+                        type: integer
+                      isOX:
+                        type: boolean
+                choice:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      index:
+                        type: integer
+                      content:
+                        type: string
+              required:
+                - title
+              example:
+                setId: 1
+                title: easy questions
+                description: very easy
+                problems:
+                  - index: 1
+                    question: what is it
+                    answer: 1
+                    explanation: thats it
+                    isOX: false
+                    choice:
+                      - index: 1
+                        content: a
+                      - index: 2
+                        content: b
+                  - index: 2
+                    question: what is it
+                    answer: 1
+                    explanation: thats it
+                    isOX: false
+                    choice:
+                      - index: 1
+                        content: a
+                      - index: 2
+                        content: b
+        required: true
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                  username:
+                    type: string
+                  createdAt:
+                    type: string
+                  updatedAt:
+                    type: string
+                example:
+                  title: easy questions
+                  username: kimcoding
+                  createdAt: 2022. 1. 11. 오후 3:00:41
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: insufficient information
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: internal server error
+  /sets:
+    post:
+      tags:
+        - search && sets
+      summary: modify set
+      security:
+        - cookieAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                setId:
+                  type: integer
+                collectionId:
+                  type: integer
+                title:
+                  type: string
+                description:
+                  type: string
+                problems:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      index:
+                        type: integer
+                      question:
+                        type: string
+                      answer:
+                        type: integer
+                      explanation:
+                        type: integer
+                      isOX:
+                        type: boolean
+                choice:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      index:
+                        type: integer
+                      content:
+                        type: string
+              required:
+                - collectionId
+                - title
+              example:
+                setId: 1
+                collectionId: 20
+                title: easy questions
+                description: very easy
+                problems:
+                  - index: 1
+                    question: what is it
+                    answer: 1
+                    explanation: thats it
+                    isOX: false
+                    choice:
+                      - index: 1
+                        content: a
+                      - index: 2
+                        content: b
+                  - index: 2
+                    question: what is it
+                    answer: 1
+                    explanation: thats it
+                    isOX: false
+                    choice:
+                      - index: 1
+                        content: a
+                      - index: 2
+                        content: b
+        required: true
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                  username:
+                    type: string
+                  createdAt:
+                    type: string
+                  updatedAt:
+                    type: string
+                example:
+                  title: easy questions
+                  username: kimcoding
+                  createdAt: 2021-12-18 22:51:20
+                  updatedAt: 2021-12-19 22:51:20
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: insufficient information
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: invalid user
+        409:
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: duplicate information
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: internal server error
+  /collections/{collectionId}:
+    delete:
+      tags:
+        - search && sets
+      summary: delete set
+      parameters:
+        - in: path
+          name: collectionId
+          required: true
+          schema:
+            type: string
+          description: The user ID
+      security:
+        - cookieAuth: []
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                example:
+                  id: 1
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: invalid user
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: internal server error
+  /sets/search:
+    get:
+      tags:
+        - search && sets
+      summary: search set
+      parameters:
+        - name: title
+          in: query
+          description: search title
+          schema:
+            type: string
+      responses:
+        200:
+          description: ok
+          content:
+            application/json:
+              schema:
+                properties:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      creator:
+                        type: string
+                      recordId:
+                        type: integer
+                      title:
+                        type: string
+                      description:
+                        type: string
+                      solvedUserNumber:
+                        type: integer
+                      averageScore:
+                        type: number
+                      createdAt:
+                        type: string
+                example:
+                  - id: 1
+                    recordId: 1
+                    creator: messi
+                    title: easy questions
+                    description: easy
+                    solvedUserNumber: 100
+                    averageScore: 50
+                    createdAt: 2021-12-18 22:51:20
+                  - id: 2
+                    recordId: 3
+                    creator: messi
+                    title: diffcult questions
+                    description: diffcult
+                    solvedUserNumber: 50
+                    averageScore: 30
+                    createdAt: 2021-12-19 22:51:20
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: invalid user
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: internal server error
+  /sets/{setId}:
+    components: ~
+    get:
+      tags:
+        - search && sets
+      summary: select set
+      description: email
+      parameters:
+        - in: path
+          name: setId
+          required: true
+          schema:
+            type: integer
+          description: The setId
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  setId:
+                    type: integer
+                  collectionId:
+                    type: integer
+                  creator:
+                    type: string
+                  title:
+                    type: string
+                  description:
+                    type: string
+                  solvedUserNumber:
+                    type: integer
+                  problems:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        index:
+                          type: integer
+                        question:
+                          type: string
+                        answer:
+                          type: integer
+                        explanation:
+                          type: integer
+                        isOX:
+                          type: boolean
+                  choice:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        index:
+                          type: integer
+                        content:
+                          type: string
+                example:
+                  setId: 1
+                  collectionId: 2
+                  creator: kimcoding
+                  title: easy questions
+                  description: very easy
+                  solvedUserNumber: 100
+                  problems:
+                    - id: 1
+                      index: 1
+                      question: what is it
+                      answer: 1
+                      explanation: thats it
+                      isOX: false
+                      choice:
+                        - id: 1
+                          index: 1
+                          content: a
+                        - id: 2
+                          index: 2
+                          content: b
+                    - id: 2
+                      index: 2
+                      question: what is it
+                      answer: 1
+                      explanation: thats it
+                      isOX: false
+                      choice:
+                        - id: 1
+                          index: 1
+                          content: a
+                        - id: 2
+                          index: 2
+                          content: b
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: insufficient information
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: internal server error
+  /solve-records:
+    post:
+      tags:
+        - search && sets
+      summary: record solving
+      security:
+        - cookieAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                setId:
+                  type: number
+              required:
+                - setId
+              example:
+                setId: 1
+        required: true
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  recordId:
+                    type: integer
+                  solver:
+                    type: string
+                example:
+                  recordId: 1
+                  solver: zzz@naver.com
+        400:
+          description: bad Request
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: insufficient information
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: internal server error
+  /solve-status:
+    post:
+      tags:
+        - search && sets
+      summary: solve set
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                solver:
+                  type: string
+                recordId:
+                  type: integer
+                problemId:
+                  type: integer
+                choice:
+                  type: integer
+              required:
+                - solver
+                - recordId
+                - problemId
+                - choice
+              example:
+                solver: kimcoding@naver.com
+                recordId: 1
+                problemId: 2
+                choice: 3
+        required: true
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalRate:
+                    type: number
+                  userChoices:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        - problemId: 1
+                          choice: 2
+                          selectionRate: ~
+                          type: array
+                          items:
+                            type: float
+                example:
+                  id: 1
+                  selectionRate:
+                    - 10
+                    - 20
+                    - 30
+                    - 40
+        400:
+          description: ~
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: insufficient information
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: internal server error
+  /solve-records/{recordId}:
+    patch:
+      tags:
+        - search && sets
+      summary: submit set
+      parameters:
+        - in: path
+          name: recordId # Note the name is the same as in the path
+          required: true
+          schema:
+            type: integer
+          description: recordId
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                answerRate:
+                  type: number
+              required:
+                - answerRate
+              example:
+                answerRate: 33.299999999999997
+        required: true
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                example:
+                  id: 1
+        400:
+          description: bad Request
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: insufficient information
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: internal server error
+  /solve-records/{recordid}:
+    get:
+      tags:
+        - search && sets
+      summary: set statics
+      parameters:
+        - in: path
+          name: recordid # Note the name is the same as in the path
+          required: true
+          schema:
+            type: integer
+          description: recordid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                solver:
+                  type: string
+                recordId:
+                  type: integer
+                problemId:
+                  type: integer
+                choice:
+                  type: integer
+              required:
+                - solver
+                - recordId
+                - problemId
+                - choice
+              example:
+                solver: kimcoding@naver.com
+                recordId: 1
+                problemId: 2
+                choice: 3
+        required: true
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalRate:
+                    type: number
+                  userChoices:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        - problemId:
+                            type: int
+                          choice:
+                            type: int
+                          selectionRate:
+                            type: float
+                example:
+                  totalRate: 40
+                  userChoices:
+                    - problemId: 1
+                      choice: 2
+                      selectionRate:
+                        - 10
+                        - 20
+                        - 30
+                        - 40
+        400:
+          description: ~
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: insufficient information
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: internal server error
+  /sets/collections/collectionId={collectionId}:
+    get:
+      tags:
+        - search && sets
+      summary: version list
+      responses:
+        200:
+          description: ok
+          content:
+            application/json:
+              schema:
+                properties:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      editor:
+                        type: string
+                      problemCount:
+                        type: integer
+                      createdAt:
+                        type: string
+                example:
+                  - id: 1
+                    editor: kimcoding
+                    problemCount: 30
+                    createdAt: 2021-12-18 22:51:20
+                  - id: 2
+                    editor: parkhacker
+                    problemCount: 25
+                    createdAt: 2021-12-19 22:51:20
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: invalid user
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: internal server error
+  /sets/sort?solved-user-number:
+    get:
+      tags:
+        - search && sets
+      summary: popular set
+      responses:
+        200:
+          description: ok
+          content:
+            application/json:
+              schema:
+                properties:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      creator:
+                        type: string
+                      recordId:
+                        type: integer
+                      title:
+                        type: string
+                      description:
+                        type: string
+                      solvedUserNumber:
+                        type: integer
+                      averageScore:
+                        type: number
+                      createdAt:
+                        type: string
+                example:
+                  - id: 1
+                    recordId: 1
+                    creator: messi
+                    title: easy questions
+                    description: easy
+                    solvedUserNumber: 100
+                    averageScore: 50
+                    createdAt: 2021-12-18 22:51:20
+                  - id: 2
+                    recordId: 3
+                    creator: messi
+                    title: diffcult questions
+                    description: diffcult
+                    solvedUserNumber: 50
+                    averageScore: 30
+                    createdAt: 2021-12-19 22:51:20
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: invalid user
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    default: internal server error
+components:
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: accessToken

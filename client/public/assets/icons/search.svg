@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28.531" height="28.531" viewBox="0 0 28.531 28.531">
+    <g data-name="Search Icon">
+        <path data-name="패스 1" d="M6.039 0 0 6.039" transform="translate(2.828 19.664)" style="stroke-linecap:round;stroke:#000;stroke-width:4px;fill:none"/>
+        <g data-name="타원 1" transform="translate(5.531)" style="stroke:#000;stroke-width:4px;fill:none">
+            <circle cx="11.5" cy="11.5" r="11.5" style="stroke:none"/>
+            <circle cx="11.5" cy="11.5" r="9.5" style="fill:none"/>
+        </g>
+    </g>
+</svg>

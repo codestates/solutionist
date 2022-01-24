@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;700&family=Righteous&display=swap');
+@font-face {
+  font-family: 'GongGothicMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GowunDodum-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+:root {
+  --white: #fff;
+  --very-light-pink: #fffcf9;
+  --black: #000;
+  --brownish-grey: #616161;
+  --warm-grey: #707070;
+  --light--gray: #dcdce0;
+  --pale--gray: #eef2f6;
+  --butterscotch: #fbb74a;
+  --orangey-yellow: #faad18;
+  --vibrant-green: #0c0;
+  --red: #e00;
+  --red--error: #ff5252;
+  --warm-grey-50: rgba(112, 112, 112, 0.5);
+  --orangey-yellow-50: rgba(250, 173, 24, 0.5);
+  --vibrant-green-50: rgba(0, 204, 0, 0.5);
+  --red-50: rgba(238, 0, 0, 0.5);
+}
+body {
+  background-color: var(--very-light-pink);
+}
+* {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+input,
+textarea {
+  background: none;
+  border: none;
+  padding: 0;
+}
+input:focus,
+textarea:focus {
+  outline: none;
+}
+
+button {
+  background: none;
+  border: none;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes dropdown {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+  }
+}

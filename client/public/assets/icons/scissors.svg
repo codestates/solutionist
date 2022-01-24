@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 242.426 242.426">
+    <defs>
+        <style>
+            .cls-1{fill:none;stroke:#707070;stroke-linecap:round;stroke-width:30px}
+        </style>
+    </defs>
+    <g id="구성_요소_8_1" data-name="구성 요소 8 – 1" transform="translate(21.213 21.213)">
+        <path id="선_19" data-name="선 19" class="cls-1" d="M200 0 0 200"/>
+        <path id="선_20" data-name="선 20" class="cls-1" transform="rotate(90 100 100)" d="M200 0 0 200"/>
+    </g>
+</svg>

@@ -5,11 +5,14 @@
   "main": "index.ts",
   "scripts": {
     "start": "ts-node src/index.ts",
+    "dev": "tsc-watch --onSuccess \"nodemon -r tsconfig-paths/register src/index.ts\"",
     "build": "tsc -p .",
-    "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js --config ./src/ormconfig.ts",
-    "migration": "typeorm migration:run",
-    "migration:create": "typeorm migration:create -n",
-    "migration:revert": "typeorm migration:revert"
+    "typeorm": "ts-node ./node_modules/typeorm/cli.js",
+    "migration": "npm run typeorm migration:run",
+    "migration:create": "npm run typeorm migration:create -n",
+    "migration:revert": "npm run typeorm migration:revert",
+    "seed": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed",
+    "seed:config": "ts-node ./node_modules/typeorm-seeding/dist/cli.js config"
   },
   "repository": {
     "type": "git",
@@ -23,15 +26,38 @@
   "homepage": "https://github.com/codestates/solutionist#readme",
   "devDependencies": {
     "@types/express": "^4.17.13",
-    "@types/node": "^8.0.29",
+    "@types/node": "^8.10.66",
     "express": "^4.17.2",
     "nodemon": "^2.0.15",
+    "pm2": "^5.1.2",
+    "swagger-jsdoc": "^6.1.0",
+    "swagger-ui-express": "^4.3.0",
     "ts-node": "3.3.0",
     "typescript": "3.3.3333"
   },
   "dependencies": {
+    "aws-sdk": "^2.1053.0",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express-asyncify": "^1.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.4",
+    "multer-s3": "^2.10.0",
     "mysql": "^2.14.1",
-    "typeorm": "0.2.41",
-    "reflect-metadata": "^0.1.10"
+    "mysql2": "^2.3.3",
+    "tsc-watch": "^4.6.0",
+    "tsconfig-paths": "^3.12.0",
+    "typedi": "^0.10.0",
+    "typeorm": "^0.2.41",
+    "typeorm-seeding": "^1.6.1",
+    "typeorm-typedi-extensions": "^0.4.1",
+    "upgrade": "^1.1.0",
+    "uuid": "^8.3.2"
+  },
+  "compilerOptions": {
+    "module": "CommonJS"
   }
 }
