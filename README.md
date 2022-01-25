@@ -7,7 +7,6 @@
 <a id = "txt" href="https://solutionist.site" target="_blank">✏️🧑🏻‍🎓solutionist</a>는 아카이브를 만들고,풀고,다 함께 수정할 수 있으며,공유할 수 있는 웹서비스입니다.
   </p>  
 <br>
-<br>
 
 ***
 
@@ -126,12 +125,11 @@ SOLUTIONIST는 객관식, OX 문제 그리고 정답이 없는 설문조사를 �
 <br>
 
 ### 스택
-
+***
 <a>
 	<img src="https://user-images.githubusercontent.com/46926683/150668515-4692731e-7562-4901-bc82-0b2a501e1acc.png" width="750" height="600" style="max-width: 100%;">
 </a>
 
-***
 
 <br>
 <br>
