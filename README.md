@@ -127,7 +127,7 @@ SOLUTIONIST는 객관식, OX 문제 그리고 정답이 없는 설문조사를 �
 ### 스택
 ***
 <a>
-	<img src="https://user-images.githubusercontent.com/89366599/151048889-8b49d203-a264-4179-bceb-20537172ff06.png" width="750" height="600" style="max-width: 100%;">
+	<img src="https://user-images.githubusercontent.com/89366599/151048889-8b49d203-a264-4179-bceb-20537172ff06.png" width="1000" height="962" style="max-width: 100%;">
 </a>
 
 
