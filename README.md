@@ -25,7 +25,7 @@ Solutionist는 문제를 **만들고, 풀고, 공유**할 수 있는 서비스�
 
 ### ⚙️ **Tech Stack**
 
-<img src="https://codestates.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F763099dc-3bf1-4319-a1a5-15ee3f90cfb1%2Fstack.png?table=block&id=b4f37d7a-6415-4840-a3a3-e5676b8cf5ed&spaceId=82d63a72-8254-4cde-bf1e-b2597b7c099c&width=2000&userId=&cache=v2" alt="solutionist" width="70%"/>  
+<img src="https://user-images.githubusercontent.com/89366599/151048889-8b49d203-a264-4179-bceb-20537172ff06.png" width="721" height="700" style="max-width: 100%;">  
 
 ## 팀원 소개
 |**이름**|포지션|Github|
