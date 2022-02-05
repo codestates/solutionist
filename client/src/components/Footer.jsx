@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { VscGithub, VscRepo } from 'react-icons/vsc';
 
@@ -57,26 +56,26 @@ const Footer = () => {
     <FooterContainer>
       <Header>TEAM MEMBER</Header>
       <Crew>
-        <Link to="https://github.com/JAM-PARK" target="_blank">
+        <a href="https://github.com/JAM-PARK" target="_blank">
           박재민 Front-End
-        </Link>
-        <Link to="https://github.com/jlthepi" target="_blank">
+        </a>
+        <a href="https://github.com/jlthepi" target="_blank">
           이병찬 Front-End
-        </Link>
-        <Link to="https://github.com/widalida26" target="_blank">
+        </a>
+        <a href="https://github.com/widalida26" target="_blank">
           위다빈 Back-End
-        </Link>
-        <Link to="https://github.com/inde153" target="_blank">
+        </a>
+        <a href="https://github.com/inde153" target="_blank">
           김동언 Back-End
-        </Link>
+        </a>
       </Crew>
       <Icons>
-        <Link to="https://github.com/codestates/solutionist" target="_blank">
+        <a href="https://github.com/codestates/solutionist" target="_blank">
           <VscGithub />
-        </Link>
-        <Link to="https://github.com/codestates/solutionist/wiki" target="_blank">
+        </a>
+        <a href="https://github.com/codestates/solutionist/wiki" target="_blank">
           <VscRepo />
-        </Link>
+        </a>
       </Icons>
       <Copyright>© 2022 SOLUTIONIST. All rights reserved.</Copyright>
     </FooterContainer>
